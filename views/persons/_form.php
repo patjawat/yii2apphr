@@ -20,11 +20,10 @@ use app\models\Category;
 
     <?= $form->field($model, 'lname')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'organization')->textInput() ?>
 
     <?=
-$form->field($model, 'position')->widget(Select2::classname(), [
-    'data' =>  ArrayHelper::map(Category::find()->all(),'id','name'),
+$form->field($model, 'organization')->widget(Select2::classname(), [
+    'data' =>  ArrayHelper::map(Category::find()->where(['category_type' => 1])->all(),'id','name'),
     'options' => ['placeholder' => 'ท่าวัดความดันโลหิต'],
     'pluginOptions' => [
         'allowClear' => true,
@@ -33,8 +32,26 @@ $form->field($model, 'position')->widget(Select2::classname(), [
 ]);
 ?>
 
-    <?= $form->field($model, 'study')->textInput() ?>
+<?=
+$form->field($model, 'position')->widget(Select2::classname(), [
+    'data' =>  ArrayHelper::map(Category::find()->where(['category_type' => 2])->all(),'id','name'),
+    'options' => ['placeholder' => 'ท่าวัดความดันโลหิต'],
+    'pluginOptions' => [
+        'allowClear' => true,
+    ],
 
+]);
+?>
+<?=
+$form->field($model, 'study')->widget(Select2::classname(), [
+    'data' =>  ArrayHelper::map(Category::find()->where(['category_type' => 3])->all(),'id','name'),
+    'options' => ['placeholder' => 'ท่าวัดความดันโลหิต'],
+    'pluginOptions' => [
+        'allowClear' => true,
+    ],
+
+]);
+?>
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

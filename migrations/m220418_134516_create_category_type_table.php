@@ -17,6 +17,9 @@ class m220418_134516_create_category_type_table extends Migration
             'type_name' => $this->string()->notNull()->comment('ประเภท'),
             'title' => $this->string()->notNull()->comment('ชื่อ')
         ]);
+        $this->insert('category_type',['type_name' => 'organization','title' => 'คณะ']);
+        $this->insert('category_type',['type_name' => 'position','title' => 'ตำแหน่ง']);
+        $this->insert('category_type',['type_name' => 'study','title' => 'สาขาวิชา']);
     }
 
     /**

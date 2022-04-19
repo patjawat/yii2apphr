@@ -48,7 +48,16 @@ $this->params['breadcrumbs'][] = $this->title;
             //     'deleteOptions' => ['title' => 'This will launch the book delete action. Disabled for this demo!', 'data-toggle' => 'tooltip'],
             //     'headerOptions' => ['class' => 'kartik-sheet-style'],
             // ],
-            ['class' => 'yii\grid\ActionColumn'],
+            // ['class' => 'kartik\grid\ActionColumn'],
+            [
+                'class' => 'kartik\grid\ActionColumn',
+                'template'=>'{add}',
+                'buttons'=>[
+                  'add' => function($url,$model,$key){
+                      return Html::a('add',['category/create','id' => $model->id]);
+                    }
+                  ]
+              ],
         ],
     ]); ?>
 

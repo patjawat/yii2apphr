@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Category;
+use app\models\CategoryType;
 use app\models\CategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -67,7 +68,13 @@ class CategoryController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Category();
+        $id = $this->request->get('id');
+        $type = CategoryType::findOne($id);
+
+        $model = new Category([
+            'category_type' => $type->id 
+        ]);
+        
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -79,6 +86,7 @@ class CategoryController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'type' => $type,
         ]);
     }
 

@@ -16,7 +16,7 @@ use app\models\CategoryType;
 
     <?=
 $form->field($model, 'category_type')->widget(Select2::classname(), [
-    'data' =>  ArrayHelper::map(CategoryType::find()->all(),'id','name'),
+    'data' =>  ArrayHelper::map(CategoryType::find()->where(['type_name' => $type->type_name])->all(),'id','title'),
     'options' => ['placeholder' => 'ท่าวัดความดันโลหิต'],
     'pluginOptions' => [
         'allowClear' => true,
