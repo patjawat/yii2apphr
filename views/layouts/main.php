@@ -25,6 +25,16 @@ AppAsset::register($this);
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
 
+<?php
+    // echo Nav::widget([
+    // 'options' => ['class' => 'navbar-nav navbar-right'],
+    //     'label' => 'Modules',
+    //     'items' => [
+    //         Yii::$app->getModule('tasks')->dashboardNavItems(),
+         
+    //     ]
+    // ]);
+?>
 <header>
     <?php
     NavBar::begin([
@@ -37,6 +47,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
+            Yii::$app->getModule('tasks')->dashboardNavItems(),
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],

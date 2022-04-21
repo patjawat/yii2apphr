@@ -45,7 +45,7 @@
                         ]
                     ],
                     ['label' => 'Simple Link', 'icon' => 'th', 'badge' => '<span class="right badge badge-danger">New</span>'],
-                    ['label' => 'Person','url' => ['/persons'],'icon' => 'th'],
+                    ['label' => 'ทะเบียนผู้ยื่นขอ','url' => ['/persons'],'icon' => 'th'],
                     ['label' => 'type','url' => ['/category-type'],'icon' => 'th'],
                     ['label' => 'category','url' => ['/category'],'icon' => 'th'],
                     ['label' => 'step','url' => ['/step'],'icon' => 'th'],

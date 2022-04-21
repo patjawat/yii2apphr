@@ -1,12 +1,15 @@
 <?php
 
 namespace app\controllers;
-
+use Yii;
 use app\models\Persons;
 use app\models\PersonsSearch;
+use app\models\Task;
+use app\models\TaskSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * PersonsController implements the CRUD actions for Persons model.
@@ -55,8 +58,14 @@ class PersonsController extends Controller
      */
     public function actionView($id)
     {
+        $searchModel = new TaskSearch([
+            'person_id' => $id
+        ]);
+        $dataProvider = $searchModel->search($this->request->queryParams);
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -116,6 +125,15 @@ class PersonsController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionDeleteTask($id)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return $this->findModelTask($id)->delete();
+
+        
+    }
+
+
     /**
      * Finds the Persons model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -126,6 +144,15 @@ class PersonsController extends Controller
     protected function findModel($id)
     {
         if (($model = Persons::findOne(['id' => $id])) !== null) {
+            return $model;
+        }
+
+        throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    protected function findModelTask($id)
+    {
+        if (($model = Task::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

@@ -14,18 +14,19 @@ class m220418_132049_create_task_table extends Migration
     {
         $this->createTable('{{%task}}', [
             'id' => $this->primaryKey(),
-            'step_id' => $this->integer()->notNull(),
-            'status' => $this->integer()->notNull(),
-            'person_id' => $this->integer(),
-            'note' => $this->text(),
-            'director' => $this->string(),
-            'basic' => $this->text(),
-            'author' => $this->integer(),
-            'visit_date' => $this->date(),
-            'meetting_date' => $this->date(),
-            'reader_result' => $this->date(),
-            'set_result_date' => $this->date(),
+            'step_id' => $this->integer()->notNull()->comment('กระบวนการ'),
+            'status' => $this->integer()->comment('สถานะ'),
+            'person_id' => $this->integer()->comment('ชื่อ-ผู้ขอ'),
+            'note' => $this->text()->comment('หมายเหตุ'),
+            'director' => $this->string()->comment(''),
+            'basic' => $this->text()->comment('เบื้องต้น ผ่าน ไม่ผ่าน'),
+            'author' => $this->integer()->comment('ผู้รับผิดชอบ'),
+            'visit_date' => $this->date()->comment('ผ่านที่ประชุมคณะฯ'),
+            'meetting_date' => $this->date()->comment(''),
+            'reader_result' => $this->date()->comment('reader ส่งผลกลับ'),
+            'set_result_date' => $this->date()->comment('Readers ต้องส่งผล'),
         ]);
+
     }
 
     /**

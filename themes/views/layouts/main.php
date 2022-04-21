@@ -7,6 +7,8 @@ use yii\helpers\Html;
 
 \hail812\adminlte3\assets\FontAwesomeAsset::register($this);
 \hail812\adminlte3\assets\AdminLteAsset::register($this);
+app\assets\AppAsset::register($this);
+use yii\bootstrap4\Modal;
 $this->registerCssFile('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback');
 
 $assetDir = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
@@ -27,6 +29,19 @@ $this->registerJsFile($publishedRes[1].'/control_sidebar.js', ['depends' => '\ha
 </head>
 <body class="hold-transition sidebar-mini">
 <?php $this->beginBody() ?>
+
+<?php
+        Modal::begin([
+            'id' => 'main-modal',
+            'title' => '<h4 class="modal-title"></h4>',
+            // 'size' => 'modal-sm',
+            'footer' => '',
+            'clientOptions' => ['backdrop' => 'static', 'keyboard' => false],
+        ]);
+        Modal::end();
+        ?>
+
+
 
 <div class="wrapper">
     <!-- Navbar -->

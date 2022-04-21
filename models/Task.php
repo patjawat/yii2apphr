@@ -56,12 +56,12 @@ class Task extends \yii\db\ActiveRecord
             'person_id' => 'Person ID',
             'note' => 'Note',
             'director' => 'Director',
-            'basic' => 'Basic',
-            'author' => 'Author',
+            'basic' => 'เบื้องต้น',
+            'author' => 'ผู้รับผิดชอบ',
             'visit_date' => 'Visit Date',
             'meetting_date' => 'Meetting Date',
-            'reader_result' => 'Reader Result',
-            'set_result_date' => 'Set Result Date',
+            'reader_result' => 'reader ส่งผลกลับ',
+            'set_result_date' => 'Readers ต้องส่งผล',
         ];
     }
 }
