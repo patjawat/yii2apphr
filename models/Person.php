@@ -18,6 +18,7 @@ use Yii;
  * @property int $step สถานะ
  * @property string $meetting_date ผ่านที่ประชุมวันที่
  * @property string|null $guidelines_date วันที่เข้า ก.พ.ว.
+ * @property string|null $note หมาเหตุ...
  */
 class Person extends \yii\db\ActiveRecord
 {
@@ -38,6 +39,7 @@ class Person extends \yii\db\ActiveRecord
             [['prefix', 'organization', 'req_position', 'study', 'step'], 'integer'],
             [['fname', 'lname', 'organization', 'req_position', 'author', 'step', 'meetting_date'], 'required'],
             [['meetting_date', 'guidelines_date'], 'safe'],
+            [['note'], 'string'],
             [['fname', 'lname', 'author'], 'string', 'max' => 255],
         ];
     }
@@ -59,6 +61,7 @@ class Person extends \yii\db\ActiveRecord
             'step' => 'สถานะ',
             'meetting_date' => 'ผ่านที่ประชุมวันที่',
             'guidelines_date' => 'วันที่เข้า ก.พ.ว.',
+            'note' => 'หมาเหตุ...',
         ];
     }
 }

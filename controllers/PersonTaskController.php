@@ -52,8 +52,11 @@ class PersonTaskController extends Controller
 
     public function actionList()
     {
+        $id = $this->request->get('id');
         Yii::$app->response->format = Response::FORMAT_JSON;
-        $searchModel = new PersonTaskSearch();
+        $searchModel = new PersonTaskSearch([
+            'person_id' => $id
+        ]);
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->renderAjax('list', [

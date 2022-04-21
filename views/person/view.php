@@ -138,15 +138,11 @@ $attributes = [
                     'pluginOptions' => ['allowClear' => true],
                 ],
                 'inputWidth' => '60%',
-            ],
-            
+            ],  
         ],
-    
     ],
-
     [
         'columns' => [
-            
             [
                 'attribute' => 'step',
                 'format' => 'raw',
@@ -168,15 +164,22 @@ $attributes = [
                 ],
                 'inputWidth' => '100%',
             ],
-            
-
-            
         ],
-    
     ],
-   
-
+    [
+        'columns' => [
+            [
+                'attribute' => 'note',
+                'format' => 'raw',
+                'value' => Html::a('John Steinbeck', '#', [
+                    'class' => 'kv-author-link',
+                ]),
+                'type' => DetailView::INPUT_TEXTAREA,
     
+                'inputWidth' => '100%',
+            ],
+        ],
+    ],
 
 ];
 ?>

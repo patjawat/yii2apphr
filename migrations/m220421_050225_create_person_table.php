@@ -24,6 +24,7 @@ class m220421_050225_create_person_table extends Migration
             'step' => $this->integer()->notNull()->comment('สถานะ'),
             'meetting_date' => $this->date()->notNull()->comment('ผ่านที่ประชุมวันที่'),
             'guidelines_date' => $this->date()->comment('วันที่เข้า ก.พ.ว.'),
+            'note' => $this->text()->comment('หมาเหตุ...'),
 
         ]);
     }
