@@ -34,8 +34,24 @@ function closeModal() {
       })
 }
 
+$('.a-modal').click(function (e) { 
+    e.preventDefault();
+    var url = $(this).attr('href');
 
-function deleteItem(){
-    alert()
-    return false;
-}
+    $.ajax({
+        type: "get",
+        url: url,
+        dataType: "json",
+        success: function (response) {
+            $('#main-modal').modal('show');
+           $('#main-modal-label').html(response.title);
+            $('.modal-body').html(response.content);
+            $('.modal-footer').html(response.footer);
+            $(".modal-dialog").removeClass('modal-sm');
+            $(".modal-dialog").addClass('modal-lg');
+            $('.modal-content').addClass('card-outline card-primary');
+        }
+    });
+    
+});
+

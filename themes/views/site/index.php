@@ -1,103 +1,12 @@
 <?php
 $this->title = 'Starter Page';
+use miloschuman\highcharts\Highcharts;
 $this->params['breadcrumbs'] = [['label' => $this->title]];
 ?>
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-6">
-            <?= \hail812\adminlte\widgets\Alert::widget([
-                'type' => 'success',
-                'body' => '<h3>Congratulations!</h3>',
-            ]) ?>
-            <?= \hail812\adminlte\widgets\Callout::widget([
-                'type' => 'danger',
-                'head' => 'I am a danger callout!',
-                'body' => 'There is a problem that we need to fix. A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.'
-            ]) ?>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-12 col-sm-6 col-md-3">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'CPU Traffic',
-                'number' => '10 <small>%</small>',
-                'icon' => 'fas fa-cog',
-            ]) ?>
-        </div>
-    </div>
 
-    <div class="row">
-        <div class="col-md-4 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Messages',
-                'number' => '1,410',
-                'icon' => 'far fa-envelope',
-            ]) ?>
-        </div>
-        <div class="col-md-4 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Bookmarks',
-                'number' => '410',
-                 'theme' => 'success',
-                'icon' => 'far fa-flag',
-            ]) ?>
-        </div>
-        <div class="col-md-4 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Uploads',
-                'number' => '13,648',
-                'theme' => 'gradient-warning',
-                'icon' => 'far fa-copy',
-            ]) ?>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Bookmarks',
-                'number' => '41,410',
-                'icon' => 'far fa-bookmark',
-                'progress' => [
-                    'width' => '70%',
-                    'description' => '70% Increase in 30 Days'
-                ]
-            ]) ?>
-        </div>
-        <div class="col-md-4 col-sm-6 col-12">
-            <?php $infoBox = \hail812\adminlte\widgets\InfoBox::begin([
-                'text' => 'Likes',
-                'number' => '41,410',
-                'theme' => 'success',
-                'icon' => 'far fa-thumbs-up',
-                'progress' => [
-                    'width' => '70%',
-                    'description' => '70% Increase in 30 Days'
-                ]
-            ]) ?>
-            <?= \hail812\adminlte\widgets\Ribbon::widget([
-                'id' => $infoBox->id.'-ribbon',
-                'text' => 'Ribbon',
-            ]) ?>
-            <?php \hail812\adminlte\widgets\InfoBox::end() ?>
-        </div>
-        <div class="col-md-4 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\InfoBox::widget([
-                'text' => 'Events',
-                'number' => '41,410',
-                'theme' => 'gradient-warning',
-                'icon' => 'far fa-calendar-alt',
-                'progress' => [
-                    'width' => '70%',
-                    'description' => '70% Increase in 30 Days'
-                ],
-                'loadingStyle' => true
-            ]) ?>
-        </div>
-    </div>
-
-    <div class="row">
+<div class="row">
         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
             <?= \hail812\adminlte\widgets\SmallBox::widget([
                 'title' => '150',
@@ -130,5 +39,29 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                 'loadingStyle' => true
             ]) ?>
         </div>
+    </div>
+   
+    <div class="row">
+<div class="col-lg-8 col-md-8 col-sm-8">
+<?php
+echo Highcharts::widget([
+    'options' => [
+        'chart'=>[
+            'type'=>'column'
+         ],
+       'title' => ['text' => 'Fruit Consumption'],
+       'xAxis' => [
+          'categories' => ['ขั้นที่ 1', 'ขั้นที่ 2', 'ขั้นที่ 3','ขั้นที่ 4','ขั้นที่ 5','ขั้นที่ 6','ขั้นที่ 7','ขั้นที่ 8'],
+       ],
+       'yAxis' => [
+          'title' => ['text' => 'Fruit eaten']
+       ],
+       'series' => [
+          ['name' => 'John', 'data' => [5, 17, 3,5,10,4,4,2]]
+       ]
+    ]
+ ]);
+?>
+</div>
     </div>
 </div>

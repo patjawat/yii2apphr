@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Step;
+use app\models\PersonTask;
 
 /**
- * StepSearch represents the model behind the search form of `app\models\Step`.
+ * PersonTaskSearch represents the model behind the search form of `app\models\PersonTask`.
  */
-class StepSearch extends Step
+class PersonTaskSearch extends PersonTask
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class StepSearch extends Step
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['name'], 'safe'],
+            [['id', 'person_id', 'checkup'], 'integer'],
+            [['reader_fix_date', 'reader_result_date', 'guidelines_date'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class StepSearch extends Step
      */
     public function search($params)
     {
-        $query = Step::find();
+        $query = PersonTask::find();
 
         // add conditions that should always apply here
 
@@ -59,9 +59,12 @@ class StepSearch extends Step
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'person_id' => $this->person_id,
+            'checkup' => $this->checkup,
+            'reader_fix_date' => $this->reader_fix_date,
+            'reader_result_date' => $this->reader_result_date,
+            'guidelines_date' => $this->guidelines_date,
         ]);
-
-        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

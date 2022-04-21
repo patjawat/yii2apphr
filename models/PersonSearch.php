@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Persons;
+use app\models\Person;
 
 /**
- * PersonsSearch represents the model behind the search form of `app\models\Persons`.
+ * PersonSearch represents the model behind the search form of `app\models\Person`.
  */
-class PersonsSearch extends Persons
+class PersonSearch extends Person
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class PersonsSearch extends Persons
     public function rules()
     {
         return [
-            [['id', 'organization', 'position', 'study'], 'integer'],
-            [['fname', 'lname'], 'safe'],
+            [['id', 'prefix', 'organization', 'req_position', 'study', 'step'], 'integer'],
+            [['fname', 'lname', 'author'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class PersonsSearch extends Persons
      */
     public function search($params)
     {
-        $query = Persons::find();
+        $query = Person::find();
 
         // add conditions that should always apply here
 
@@ -59,13 +59,16 @@ class PersonsSearch extends Persons
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'prefix' => $this->prefix,
             'organization' => $this->organization,
-            'position' => $this->position,
+            'req_position' => $this->req_position,
             'study' => $this->study,
+            'step' => $this->step,
         ]);
 
         $query->andFilterWhere(['like', 'fname', $this->fname])
-            ->andFilterWhere(['like', 'lname', $this->lname]);
+            ->andFilterWhere(['like', 'lname', $this->lname])
+            ->andFilterWhere(['like', 'author', $this->author]);
 
         return $dataProvider;
     }

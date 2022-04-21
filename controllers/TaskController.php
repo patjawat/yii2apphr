@@ -1,7 +1,6 @@
 <?php
 
 namespace app\controllers;
-
 use Yii;
 use app\models\Task;
 use app\models\TaskSearch;
@@ -9,7 +8,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\Response;
-use app\models\Persons;
+use app\models\Person;
+
 /**
  * TaskController implements the CRUD actions for Task model.
  */
@@ -49,29 +49,6 @@ class TaskController extends Controller
         ]);
     }
 
-    public function actionGetTask()
-    {
-        $searchModel = new TaskSearch([
-            'person_id' => $this->request->get('id')
-        ]);
-        $dataProvider = $searchModel->search($this->request->queryParams);
-        
-        // if (Yii::$app->request->isAjax) {
-            Yii::$app->response->format = Response::FORMAT_JSON;
-            return $dataProvider->getModels();
-        // return $this->renderAjax('get_task', [
-        //     'searchModel' => $searchModel,
-        //     'dataProvider' => $dataProvider,
-        // ]);
-    // }else{
-    //     return $this->render('get_task', [
-    //         'searchModel' => $searchModel,
-    //         'dataProvider' => $dataProvider,
-    //     ]);
-    // }
-    }
-
-
     /**
      * Displays a single Task model.
      * @param int $id ID
@@ -92,7 +69,7 @@ class TaskController extends Controller
      */
     public function actionCreate()
     {
-        $person = Persons::findOne($this->request->get('id'));
+        $person = Person::findOne($this->request->get('id'));
         $model = new Task([
             'person_id' => $person->id
         ]);
@@ -130,10 +107,6 @@ class TaskController extends Controller
                 ]);
             }  
     }
-
-
-
-    
 
     /**
      * Updates an existing Task model.
