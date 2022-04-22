@@ -63,6 +63,10 @@ class SiteController extends Controller
     {
         return $this->render('index');
     }
+    public function actionIndexOri()
+    {
+        return $this->render('index_ori');
+    }
 
     /**
      * Login action.

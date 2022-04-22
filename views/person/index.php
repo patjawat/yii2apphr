@@ -68,31 +68,23 @@ $this->params['breadcrumbs'][] = $this->title;
                             #
                         </td>
                         <td>
-                            <a>
-                                AdminLTE v3
-                            </a>
-                            <br>
-                            <small>
-                                Created 01.01.2019
-                            </small>
+                            <?=$model->fname.' '.$model->lname;?>
+        
                         </td>
                         <td>
                             <ul class="list-inline">
+                                <?php foreach($model->readers as $reader):?>
                                 <li class="list-inline-item">
-                                    <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar.png">
+                                    <?=Html::img('@web/img/avatar.png',['class' => 'table-avatar']);?>
+                    
                                 </li>
-                                <li class="list-inline-item">
-                                    <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar2.png">
-                                </li>
-                                <li class="list-inline-item">
-                                    <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar3.png">
-                                </li>
-                                <li class="list-inline-item">
-                                    <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar4.png">
-                                </li>
+                                <?php endforeach;?>
                             </ul>
                         </td>
                         <td class="project_progress">
+                            <?php
+                            switch (])
+                            ?>
                             <div class="progress progress-sm">
                                 <div class="progress-bar bg-green" role="progressbar" aria-valuenow="57"
                                     aria-valuemin="0" aria-valuemax="100" style="width: 57%">
@@ -103,10 +95,11 @@ $this->params['breadcrumbs'][] = $this->title;
                             </small>
                         </td>
                         <td class="project-state">
-                            <span class="badge badge-success">Success</span>
+                            <!-- <span class="badge badge-success">Success</span> -->
+                            <?=$model->step->title?>
                         </td>
                         <td class="project-actions text-right">
-                            <?=Html::a('<i class="fas fa-folder"></i>View',['/persons/view','id' => $model->id],['class' => 'btn btn-primary btn-sm'])?>
+                            <?=Html::a('<i class="fas fa-folder"></i>View',['/person/view','id' => $model->id],['class' => 'btn btn-primary btn-sm'])?>
                             <a class="btn btn-info btn-sm" href="#">
                                 <i class="fas fa-pencil-alt">
                                 </i>

@@ -15,7 +15,7 @@ use Yii;
  * @property int $req_position ตำแหน่ง
  * @property int|null $study สาขาวิชา
  * @property string $author ผู้รับผิดชอบ
- * @property int $step_id สถานะ
+ * @property int $step สถานะ
  * @property string $meetting_date ผ่านที่ประชุมวันที่
  * @property string|null $guidelines_date วันที่เข้า ก.พ.ว.
  * @property string|null $note หมาเหตุ...
@@ -64,11 +64,12 @@ class Person extends \yii\db\ActiveRecord
             'note' => 'หมาเหตุ...',
         ];
     }
+
     public function getReaders() {
-        return PersonTask::find()->where(['person_id' => $this->id])->all();
+       return PersonTask::find()->where(['person_id' => $this->id])->all();
+    }
+
+    public function getStep() {
+        return $this->hasOne(Step::class, ['id' => 'step_id']);
      }
- 
-     public function getStep() {
-         return $this->hasOne(Step::class, ['id' => 'step_id']);
-      }
 }

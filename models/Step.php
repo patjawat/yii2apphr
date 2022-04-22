@@ -8,6 +8,7 @@ use Yii;
  * This is the model class for table "step".
  *
  * @property int $id
+ * @property string $title เขื่อเรื่อง
  * @property string $name ชื่อ
  */
 class Step extends \yii\db\ActiveRecord
@@ -26,8 +27,8 @@ class Step extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
-            [['name'], 'string', 'max' => 255],
+            [['title', 'name'], 'required'],
+            [['title', 'name'], 'string', 'max' => 255],
         ];
     }
 
@@ -38,6 +39,7 @@ class Step extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'title' => 'เขื่อเรื่อง',
             'name' => 'ชื่อ',
         ];
     }

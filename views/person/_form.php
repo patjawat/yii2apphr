@@ -9,15 +9,13 @@ use app\models\Category;
 use app\models\Prefix;
 $optiondate = ['type' => DateControl::FORMAT_DATE,'language' => 'th',];
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Person */
-/* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="person-form">
+<div class="person-form container">
 
     <?php $form = ActiveForm::begin(); ?>
-
+<div class=row>
+    <div class=col-1>
     <?=
 $form->field($model, 'prefix')->widget(Select2::classname(), [
     'data' =>  ArrayHelper::map(Prefix::find()->all(),'id','name'),
@@ -27,11 +25,22 @@ $form->field($model, 'prefix')->widget(Select2::classname(), [
     ],
 ]);
 ?>
+    </div>
+    <div class=col-4>
+        <?= $form->field($model, 'fname')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'fname')->textInput(['maxlength' => true]) ?>
-
+</div>
+<div class=col-4>
     <?= $form->field($model, 'lname')->textInput(['maxlength' => true]) ?>
-    <?= $form->field($model, 'meetting_date')->widget(DateControl::classname(), $optiondate)->label(true)?>
+
+</div>
+</div>
+
+
+
+<div class=row>
+<div class=col-4>
+
 
 
     <?=
@@ -44,6 +53,9 @@ $form->field($model, 'organization')->widget(Select2::classname(), [
 
 ]);
 ?>
+</div>
+
+<div class=col-4>
 
 <?=
 $form->field($model, 'req_position')->widget(Select2::classname(), [
@@ -55,6 +67,10 @@ $form->field($model, 'req_position')->widget(Select2::classname(), [
 
 ]);
 ?>
+
+</div>
+
+<div class=col-4>
 <?=
 $form->field($model, 'study')->widget(Select2::classname(), [
     'data' =>  ArrayHelper::map(Category::find()->where(['category_type' => 3])->all(),'id','name'),
@@ -66,9 +82,26 @@ $form->field($model, 'study')->widget(Select2::classname(), [
 ]);
 ?>
 
+</div>
+</div>
+
+
+<div class=row>
+<div class=col-4>
+    <?= $form->field($model, 'meetting_date')->widget(DateControl::classname(), $optiondate)->label(true)?>
+
+</div>
+<div class=col-4>
     <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'step')->textInput() ?>
+</div>
+</div>
+
+
+
+
+
+    <?= $form->field($model, 'step_id')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

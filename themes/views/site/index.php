@@ -3,15 +3,32 @@ $this->title = 'Starter Page';
 use miloschuman\highcharts\Highcharts;
 $this->params['breadcrumbs'] = [['label' => $this->title]];
 ?>
+<style>
+    .small-box {
+    border-radius: 1.2rem;
+    box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+}
+</style>
 <div class="container-fluid">
 
 
-<div class="row">
+    <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
             <?= \hail812\adminlte\widgets\SmallBox::widget([
                 'title' => '150',
-                'text' => 'New Orders',
+                'text' => 'ยื่นขอทั้งหมด',
                 'icon' => 'fas fa-shopping-cart',
+            ]) ?>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+            <?= \hail812\adminlte\widgets\SmallBox::widget([
+                'title' => '150',
+                'text' => 'ขอทบทวน',
+                'icon' => 'fas fa-shopping-cart',
+                'theme' =>'warning'
             ]) ?>
         </div>
         <div class="col-lg-4 col-md-6 col-sm-6 col-12">
@@ -30,20 +47,12 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
             ]) ?>
             <?php \hail812\adminlte\widgets\SmallBox::end() ?>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
-            <?= \hail812\adminlte\widgets\SmallBox::widget([
-                'title' => '44',
-                'text' => 'User Registrations',
-                'icon' => 'fas fa-user-plus',
-                'theme' => 'gradient-success',
-                'loadingStyle' => true
-            ]) ?>
-        </div>
+
     </div>
-   
+
     <div class="row">
-<div class="col-lg-8 col-md-8 col-sm-8">
-<?php
+        <div class="col-8">
+            <?php
 echo Highcharts::widget([
     'options' => [
         'chart'=>[
@@ -62,6 +71,20 @@ echo Highcharts::widget([
     ]
  ]);
 ?>
-</div>
+        </div>
+        <div class="col-4">
+        <?= \hail812\adminlte\widgets\InfoBox::widget([
+                'text' => 'เอกฉันท์',
+                'number' => '410',
+                 'theme' => 'success',
+                'icon' => 'far fa-flag',
+            ]) ?>
+            <?= \hail812\adminlte\widgets\InfoBox::widget([
+                'text' => 'เอกฉันท์',
+                'number' => '410',
+                 'theme' => 'success',
+                'icon' => 'far fa-flag',
+            ]) ?>
+        </div>
     </div>
 </div>
