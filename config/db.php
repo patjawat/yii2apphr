@@ -2,7 +2,7 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'mysql:host=mariadb;dbname=hr',
+    'dsn' => 'mysql:host=mariadb;dbname=hr_db',
     'username' => 'root',
     'password' => 'docker',
     'charset' => 'utf8',

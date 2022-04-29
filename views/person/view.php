@@ -144,7 +144,7 @@ $attributes = [
     [
         'columns' => [
             [
-                'attribute' => 'step',
+                'attribute' => 'step_id',
                 'format' => 'raw',
                 'value' => Html::a('John Steinbeck', '#', [
                     'class' => 'kv-author-link',
@@ -222,6 +222,7 @@ $attributes = [
         'hAlign' => true,
         'vAlign' => true,
         'fadeDelay' => true,
+        'buttons1' => '{update}',
         'panel' => [
             'type' => 'primary',
             'heading' => 'Contratto' . ' : ' . $model->id . ' ' . $model->fname,
@@ -236,7 +237,7 @@ $attributes = [
             'params' => ['id' => 1000, 'kvdelete' => true],
         ],
         'container' => ['id' => 'kv-demo'],
-        'formOptions' => ['action' => Url::current(['#' => 'kv-demo'])], // your action to delete
+        'formOptions' => ['action' => Url::current(['update','id' => $model->id])], // your action to delete
     ]);
 //  DetailView::widget([
 //     'model' => $model,

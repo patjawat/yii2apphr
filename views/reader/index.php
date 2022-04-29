@@ -13,8 +13,16 @@ use app\models\Reader;
 $this->title = 'Reader';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="reader-index">
 
+<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Basic Table</h4>
+                  <p class="card-description">
+                    Add class <code>.table</code>
+                  </p>
+                  <div class="table-responsive">
+                  
+      
     <p>
         <?= Html::a('สร้างใหม่', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
@@ -42,4 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?php Pjax::end(); ?>
 
-</div>
+    </div>
+                </div>
+              </div>
+

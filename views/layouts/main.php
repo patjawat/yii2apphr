@@ -20,62 +20,30 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <?php $this->head() ?>
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
-
-<?php
-    // echo Nav::widget([
-    // 'options' => ['class' => 'navbar-nav navbar-right'],
-    //     'label' => 'Modules',
-    //     'items' => [
-    //         Yii::$app->getModule('tasks')->dashboardNavItems(),
-         
-    //     ]
-    // ]);
-?>
-<header>
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
-        'items' => [
-            Yii::$app->getModule('tasks')->dashboardNavItems(),
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    ?>
-</header>
+<?=$this->render('Navbar');?>
 
 <main role="main" class="flex-shrink-0">
-    <div class="container">
-        <?= Breadcrumbs::widget([
+    <div class="container-fluid page-body-wrapper">
+      
+
+        <?=$this->render('wrapper_setting');?>
+        <?=$this->render('right_sidebar');?>
+        <?=$this->render('sidebar');?>
+        <div class="main-panel">
+<div class="content-wrapper">
+<?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
-        <?= $content ?>
+    <?= $content ?>
+
+</div>
+        </div>
     </div>
 </main>
 

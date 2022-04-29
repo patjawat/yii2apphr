@@ -29,6 +29,7 @@ class Person extends \yii\db\ActiveRecord
     {
         return 'person';
     }
+    public $q;
 
     /**
      * {@inheritdoc}
@@ -38,7 +39,7 @@ class Person extends \yii\db\ActiveRecord
         return [
             [['prefix', 'organization', 'req_position', 'study', 'step_id'], 'integer'],
             [['fname', 'lname', 'organization', 'req_position', 'author', 'step_id', 'meetting_date'], 'required'],
-            [['meetting_date', 'guidelines_date'], 'safe'],
+            [['meetting_date', 'guidelines_date','q'], 'safe'],
             [['note'], 'string'],
             [['fname', 'lname', 'author'], 'string', 'max' => 255],
         ];
@@ -64,11 +65,43 @@ class Person extends \yii\db\ActiveRecord
             'note' => 'หมาเหตุ...',
         ];
     }
+
     public function getReaders() {
         return PersonTask::find()->where(['person_id' => $this->id])->all();
      }
  
      public function getStep() {
          return $this->hasOne(Step::class, ['id' => 'step_id']);
+      }
+
+      public function ProgressPerson() {
+        switch ($this->step_id) {
+            case 1:
+              return 1;
+              break;
+            case 2:
+              return 24;
+              break;
+            case 3:
+              return 36;
+              break;
+            case 4:
+                return 48;
+                break;
+            case 5:
+                return 60;
+                break;
+            case 6:
+                return 72;
+                break; 
+            case 7:
+                return 84;
+                break;
+            case 8:
+                return 100;
+                break; 
+            default:
+             return 0;
+          }
       }
 }

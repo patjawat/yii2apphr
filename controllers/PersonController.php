@@ -1,12 +1,13 @@
 <?php
 
 namespace app\controllers;
-
+use Yii;
 use app\models\Person;
 use app\models\PersonSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * PersonController implements the CRUD actions for Person model.
@@ -91,6 +92,7 @@ class PersonController extends Controller
      */
     public function actionUpdate($id)
     {
+        
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {

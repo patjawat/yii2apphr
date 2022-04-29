@@ -2,6 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$db_yii2 = require __DIR__ . '/db_yii2.php';
 $modules = require __DIR__ . '/add_modules.php';
 
 
@@ -28,10 +29,22 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        // 'user' => [
+        //     'identityClass' => 'app\models\User',
+        //     'enableAutoLogin' => true,
+        // ],
         'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+            'identityClass' => 'mdm\admin\models\User',
+            'loginUrl' => ['site/login'],
+            'enableAutoLogin' => false,
+            'enableSession' => true,
+            // ตั้งเวลา timeout 1 ชั่วโมง 60 วินาที * 60 นาที
+            // 'authTimeout' => 12960000,
         ],
+        'authManager' => [
+            'class' => 'dektrium\rbac\components\DbManager',
+        ],
+        
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -52,7 +65,7 @@ $config = [
             ],
         ],
         'db' => $db,
-
+        'db_yii2' => $db_yii2,
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -63,6 +76,19 @@ $config = [
     ],
     'modules' => $modules,    
     'params' => $params,
+    'as access' => [
+        'class' => 'mdm\admin\components\AccessControl',
+        'allowActions' => [
+            '*',
+            'site/*',
+            'datecontrol/parse/convert',
+            'reception/default/index',
+            'reception/default/form-upload',
+            'document/documentqr/upload-ajax',
+            'gii/*',
+            'api/*'
+        ],
+    ],
 ];
 
 if (YII_ENV_DEV) {
