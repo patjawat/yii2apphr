@@ -1,7 +1,7 @@
 version: '2'
 services:
   php:
-    image: yiisoftware/yii2-php:7.4-apache
+    image: yiisoftware/yii2-php:8.1-apache
     volumes:
       - ~/.composer-docker/cache:/root/.composer/cache:delegated
       - ./:/app:delegated
@@ -16,7 +16,6 @@ services:
     container_name: mariadb
     restart: always
     volumes:
-      - /Users/patjawat/Downloads/:/home/
       - ./docker/mariadb/data/:/var/lib/mysql
     command: ['mysqld', '--character-set-server=utf8', '--collation-server=utf8_general_ci']
 
@@ -40,4 +39,20 @@ services:
       MYSQL_USERNAME: root
       MYSQL_ROOT_PASSWORD: docker
       PMA_HOST: mariaDB
+  
+  code-server:
+    image: lscr.io/linuxserver/code-server
+    container_name: code-server
+    environment:
+      - PUID=1000 # Use the UID from the command mentioned above
+      - PGID=100 # Use the GID from the command mentioned above
+      - TZ=Asia/Kolkata # Time Zone of your choice for the container
+      - PASSWORD=password # Login password for the Web UI
+      - SUDO_PASSWORD=password # Sudo password (Optional)
+    volumes:
+      - ./config:/config # Volume mount for the container config files (Replace the path with the path on your host)
+    ports:
+      - 8443:8443 # Port mapping for the container in the format <host-port>:<container-port>. You can choose the <host-port> as per your convenience 
+    restart: unless-stopped
+
 
