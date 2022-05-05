@@ -66,12 +66,12 @@ $config = [
         ],
         'db' => $db,
         'db_yii2' => $db_yii2,
-        // 'urlManager' => [
-        //     'enablePrettyUrl' => true,
-        //     'showScriptName' => false,
-        //     'rules' => [
-        //     ],
-        // ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'rules' => [
+            ],
+        ],
         
     ],
     'modules' => $modules,    

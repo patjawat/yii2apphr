@@ -302,7 +302,7 @@ $('.create-task').click(function (e) {
     e.preventDefault();
     $.ajax({
         type: "get",
-        url: "/person-task/create",
+        url: "index.php?r=person-task/create",
         data:{id:$id},
         dataType: "json",
         success: function (response) {
