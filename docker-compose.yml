@@ -49,8 +49,9 @@ services:
       - TZ=Asia/Kolkata # Time Zone of your choice for the container
       - PASSWORD=password # Login password for the Web UI
       - SUDO_PASSWORD=password # Sudo password (Optional)
+      
     volumes:
-      - ./vcode/config:/config # Volume mount for the container config files (Replace the path with the path on your host)
+      - .:/config/workspace # Volume mount for the container config files (Replace the path with the path on your host)
     ports:
       - 8443:8443 # Port mapping for the container in the format <host-port>:<container-port>. You can choose the <host-port> as per your convenience 
     restart: unless-stopped
