@@ -19,6 +19,10 @@ class Persons extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public static function gerDb()
+    {
+        return Yii::@app->get('db_hr');
+    }
     public static function tableName()
     {
         return 'persons';

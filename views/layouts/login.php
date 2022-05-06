@@ -25,22 +25,45 @@ AppAsset::register($this);
         <?php $this->head() ?>
     </head>
 
-    <body class="login-page" style="min-height: 512.391px;">
-        <?php $this->beginBody() ?>
 
 
+    <body class="login-page" style="min-height: 466px;">
+    <?php $this->beginBody() ?>
+
+<div class="login-box">
+
+<div class="card card-outline card-primary">
+<div class="card-header text-center">
+<a href="../../index2.html" class="h1"><b>Admin</b>LTE</a>
+</div>
+<div class="card-body">
+<p class="login-box-msg">Sign in to start your session</p>
+<?= $content ?>
+
+<div class="social-auth-links text-center mt-2 mb-3">
+<a href="#" class="btn btn-block btn-primary">
+<i class="fab fa-facebook mr-2"></i> Sign in using Facebook
+</a>
+<a href="#" class="btn btn-block btn-danger">
+<i class="fab fa-google-plus mr-2"></i> Sign in using Google+
+</a>
+</div>
+
+<p class="mb-1">
+<a href="forgot-password.html">I forgot my password</a>
+</p>
+<p class="mb-0">
+<a href="register.html" class="text-center">Register a new membership</a>
+</p>
+</div>
+
+</div>
+
+</div>
 
 
-        <div class="container-fluid page-body-wrapper full-page-wrapper">
-      <div class="content-wrapper d-flex align-items-center auth px-0">
-          <?= $content ?>
-      </div>
-      <!-- content-wrapper ends -->
-    </div>
+<?php $this->endBody() ?>
 
-
-
-        <?php $this->endBody() ?>
     </body>
 </html>
 <?php $this->endPage() ?>

@@ -1,5 +1,5 @@
 <?php
-use 
+use yii\helpers\Html;
 /* @var $this yii\web\View */
 ?>
 <div class="container">
@@ -11,8 +11,7 @@ use
         <div class="user-block">
             <img class="img-circle" src="https://adminlte.io/themes/v3/dist/img/user1-128x128.jpg" alt="User Image">
             <span class="username">
-                <a href="#"><?=$model->fname.' '.$model->lname?>.</a>
-                <?=Html::a()?>
+                <?=Html::a($model->fname.' '.$model->lname,['/liff/view','id' => $model->id])?>
             </span>
             <span class="description">
             <?php

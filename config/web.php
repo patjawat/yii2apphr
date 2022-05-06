@@ -2,7 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
-$db_yii2 = require __DIR__ . '/db_yii2.php';
+$db_hr = require __DIR__ . '/db_hr.php';
 $modules = require __DIR__ . '/add_modules.php';
 
 
@@ -65,7 +65,7 @@ $config = [
             ],
         ],
         'db' => $db,
-        'db_yii2' => $db_yii2,
+        'db_hr' => $db_hr,
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -80,13 +80,14 @@ $config = [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
             '*',
-            'site/*',
-            'datecontrol/parse/convert',
-            'reception/default/index',
-            'reception/default/form-upload',
-            'document/documentqr/upload-ajax',
-            'gii/*',
-            'api/*'
+            // 'liff/*',
+            // 'site/*',
+            // 'datecontrol/parse/convert',
+            // 'reception/default/index',
+            // 'reception/default/form-upload',
+            // 'document/documentqr/upload-ajax',
+            // 'gii/*',
+            // 'api/*'
         ],
     ],
 ];
