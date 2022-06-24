@@ -73,7 +73,7 @@ class Tracking extends \yii\db\ActiveRecord
             'ref' => 'Ref',
             'person_id' => 'ผู้ยื่นขอ',
             'status_id' => 'สถานะการขอยื่น',
-            'approve' => 'วันที่สภาอนุมัติ',
+            'approve' => 'วันที่สภาอนุมัติ(มติสภาฯ)',
             'approve_result_date' => 'โปรดเกล้าแต่งตั้งให้ดำรงต่ำแหน่ง',
             'tracking' => 'วันที่ต้องติดตามผล',
             'data_json' => 'Data Json',
@@ -92,6 +92,11 @@ class Tracking extends \yii\db\ActiveRecord
     public function beforeSave($insert) {
         if (parent::beforeSave($insert)) {
             $this->data_json = Json::encode($this->data_json, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+            
+            $person = Person::findOne($this->person_id);
+            $person->status_id = $this->status_id;
+            $person->save();
+            
             return true;
         } else {
             return false;

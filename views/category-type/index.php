@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="category-type-index">
 
     <p>
-        <?= Html::a('สร้างใหม่', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('<i class="fas fa-plus"></i> สร้างใหม่', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>

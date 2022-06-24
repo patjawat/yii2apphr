@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\models\Person */
 
-$this->title = $model->id;
+$this->title = $model->Fullname().' |  '.($model->org->name).'  | ผู้รับผิดชอบ ( <i class="fas fa-user-tag"></i> <span class="text-danger"> นายปัจวัฒน์ ศรีบุญเรือง </span>)';
 $this->params['breadcrumbs'][] = ['label' => 'People', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -48,21 +48,10 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
+    <?php  DetailView::widget([
         'model' => $model,
         'attributes' => [
-            [
-                'label' =>'xx',
-                'value' => function ($model){
-                    return $model->Fullname();
-                }
-            ],
-            [
-                'label' =>'คณะ',
-                'value' => function ($model){
-                    return $model->org->name;
-                }
-            ],
+
             [
                 'label' =>'ตำแหน่ง',
                 'value' => function ($model){

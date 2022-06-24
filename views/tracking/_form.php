@@ -10,6 +10,19 @@ use app\models\Category;
 /* @var $this yii\web\View */
 /* @var $model app\models\Tracking */
 /* @var $form yii\widgets\ActiveForm */
+
+$optiondatetime = [
+    'type' => DateControl::FORMAT_DATE,
+'language' => 'th',
+'class' => 'xx',
+'pluginEvents' => [
+    "change" => "function(){
+        var dateVal = $(this).val();
+        var view = $(this).attr('id')+'-'+'label'
+        // thaiDatetime(dateVal,view)
+    }",
+]
+];
 ?>
 
 <div class="tracking-form">
@@ -27,21 +40,19 @@ use app\models\Category;
 ]); ?>
 
     <?= $form->field($model, 'status_id')->widget(Select2::classname(), [
-    'data' =>  ArrayHelper::map(Category::find()->all(),'id','name'),
+    'data' =>  ArrayHelper::map(Category::find()->where(['category_type' => 4])->all(),'id','name'),
     'options' => ['placeholder' => 'สถานะ'],
     'pluginOptions' => [
         'allowClear' => true,
     ],
 ]); ?>
 
-    <?= $form->field($model, 'approve')->textInput() ?>
-
-    <?= $form->field($model, 'approve_result_date')->textInput() ?>
-
-    <?= $form->field($model, 'tracking')->textInput() ?>
+<?= $form->field($model, 'approve')->widget(DateControl::classname(), $optiondatetime);?>
+<?= $form->field($model, 'approve_result_date')->widget(DateControl::classname(), $optiondatetime);?>
+<?= $form->field($model, 'tracking')->widget(DateControl::classname(), $optiondatetime);?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('<i class="fas fa-check"></i> บันทึก', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

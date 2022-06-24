@@ -1,5 +1,10 @@
 
-
+window.onbeforeunload = function () { 
+    $('#main-modal').modal('hide');
+    $('#awaitLogin').show();
+    $('#content-container').hide();
+ }
+ 
 // focus เวลาเปิก select2
 $(document).on("select2:open", () => {
     document.querySelector(".select2-container--open .select2-search__field").focus()

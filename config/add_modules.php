@@ -65,7 +65,6 @@ $modules['rbac'] = ['class' => 'dektrium\rbac\RbacWebModule']; // จัดก�
 $modules['lab'] = ['class' => 'app\modules\lab\Lab'];
 $modules['drug'] = ['class' => 'app\modules\drug\Drug'];
 $modules['doctorworkbench'] = ['class' => 'app\modules\doctorworkbench\Doctorworkbench']; //ห้องตรวจแพทย์
-$modules['report'] = ['class' => 'app\modules\report\Report'];
 $modules['setsession'] = ['class' => 'app\modules\setsession\SetSession']; //tehnn
 $modules['chiefcomplaint'] = ['class' => 'app\modules\chiefcomplaint\Chiefcomplaint']; //ซักประวัติหน้าห้องตรวจ
 $modules['dmassessment'] = ['class' => 'app\modules_nurse\dmassessment\Dmassessment']; // 

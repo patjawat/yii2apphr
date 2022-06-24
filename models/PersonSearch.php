@@ -18,7 +18,7 @@ class PersonSearch extends Person
     {
         return [
             [['id', 'prefix', 'organization', 'req_position', 'study', 'author'], 'integer'],
-            [['fname', 'lname', 'note', 'data_json', 'created_at', 'updated_at', 'created_by', 'updated_by','fullname'], 'safe'],
+            [['fname', 'lname', 'note', 'data_json', 'created_at', 'updated_at', 'created_by', 'updated_by','fullname','status_id'], 'safe'],
         ];
     }
 
@@ -64,6 +64,7 @@ class PersonSearch extends Person
             'req_position' => $this->req_position,
             'study' => $this->study,
             'author' => $this->author,
+            'status_id' => $this->status_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'created_by' => $this->created_by,

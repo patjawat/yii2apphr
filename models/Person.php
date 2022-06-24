@@ -65,7 +65,7 @@ class Person extends \yii\db\ActiveRecord
             [['prefix', 'organization', 'req_position', 'study', 'author', 'created_by', 'updated_by'], 'integer'],
             [['fname', 'lname', 'organization', 'req_position'], 'required'],
             [['note', 'data_json'], 'string'],
-            [['updated_at', 'created_at'], 'safe'],
+            [['updated_at', 'created_at','status_id'], 'safe'],
             [['fname', 'lname', 'phone', 'email', 'line'], 'string', 'max' => 255],
         ];
     }
@@ -88,6 +88,7 @@ class Person extends \yii\db\ActiveRecord
             'phone' => 'โทรศัพท์',
             'email' => 'Email',
             'line' => 'Line',
+            'status_id' => 'สถานะ',
             'data_json' => 'Data Json',
             'updated_at' => 'Updated At',
             'created_at' => 'Created At',
@@ -100,6 +101,11 @@ class Person extends \yii\db\ActiveRecord
     public function getTracking() {
         return $this->hasMany(Tracking::className(), ['person_id' => 'id']);
     }
+
+    public function getStatus() {
+        return $this->hasOne(Category::className(), ['id' => 'status_id']);
+    }
+
 
     public function getPrefixname() {
         return $this->hasOne(Prefix::className(), ['id' => 'prefix']);

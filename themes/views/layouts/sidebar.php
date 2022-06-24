@@ -1,10 +1,10 @@
+<?php
+use yii\helpers\Html;
+?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="<?=$assetDir?>/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
-    </a>
-
+<?=Html::a(Html::img($assetDir.'/img/AdminLTELogo.png',['class' => 'brand-image img-circle elevation-3','style' => 'opacity: .8']).'<span class="brand-text font-weight-light">AdminLTE 3</span>',['/'],['class' => 'brand-link']);
+?>
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
@@ -36,9 +36,10 @@
             echo \hail812\adminlte\widgets\Menu::widget([
                 'items' => [
                     // ['label' => 'Simple Link', 'icon' => 'th', 'badge' => '<span class="right badge badge-danger">New</span>'],
-                    ['label' => 'การติดตามผล','url' => ['/tracking'],'icon' => 'truck'],
+                    // ['label' => 'การติดตามผล','url' => ['/tracking'],'icon' => 'truck'],
                     ['label' => 'ทะเบียนผู้ยื่นขอ','url' => ['/person'],'icon' => 'user'],
                     ['label' => 'ตั้งค่าหมวดหมู่','url' => ['/category-type'],'icon' => 'layer-group'],
+                    ['label' => 'รายงาน','url' => ['/report'],'icon' => 'chart-line'],
                     // ['label' => 'category','url' => ['/category'],'icon' => 'th'],
                     // ['label' => 'step','url' => ['/step'],'icon' => 'th'],
                     // ['label' => 'Yii2 PROVIDED', 'header' => true],

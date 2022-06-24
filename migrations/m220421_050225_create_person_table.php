@@ -21,6 +21,7 @@ class m220421_050225_create_person_table extends Migration
             'req_position' => $this->integer()->notNull()->comment('ตำแหน่ง'),
             'study' => $this->integer()->comment('สาขาวิชา'),
             'note' => $this->text()->comment('หมาเหตุ...'),
+            'status_id' => $this->integer()->comment('สถานะ'),
             'author' => $this->integer()->comment('ผู้รับผิดชอบ'),
             'phone' => $this->string()->comment('โทรศัพท์'),
             'email' => $this->string()->comment('Email'),
