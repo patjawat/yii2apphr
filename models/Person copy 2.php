@@ -6,7 +6,6 @@ use Yii;
 use yii\db\Expression;
 use yii\behaviors\BlameableBehavior;
 use yii\behaviors\TimestampBehavior;
-
 /**
  * This is the model class for table "person".
  *
@@ -19,9 +18,6 @@ use yii\behaviors\TimestampBehavior;
  * @property int|null $study สาขาวิชา
  * @property string|null $note หมาเหตุ...
  * @property int|null $author ผู้รับผิดชอบ
- * @property string|null $phone โทรศัพท์
- * @property string|null $email Email
- * @property string|null $line Line
  * @property string|null $data_json
  * @property string|null $updated_at
  * @property string $created_at
@@ -30,6 +26,8 @@ use yii\behaviors\TimestampBehavior;
  */
 class Person extends \yii\db\ActiveRecord
 {
+
+    public $fullname;
     /**
      * {@inheritdoc}
      */
@@ -37,7 +35,6 @@ class Person extends \yii\db\ActiveRecord
     {
         return 'person';
     }
-
     public function behaviors()
   {
       return [
@@ -64,8 +61,8 @@ class Person extends \yii\db\ActiveRecord
             [['prefix', 'organization', 'req_position', 'study', 'author', 'created_by', 'updated_by'], 'integer'],
             [['fname', 'lname', 'organization', 'req_position'], 'required'],
             [['note', 'data_json'], 'string'],
-            [['updated_at', 'created_at'], 'safe'],
-            [['fname', 'lname', 'phone', 'email', 'line'], 'string', 'max' => 255],
+            [['updated_at', 'created_at','fullnmae'], 'safe'],
+            [['fname', 'lname'], 'string', 'max' => 255],
         ];
     }
 
@@ -79,14 +76,12 @@ class Person extends \yii\db\ActiveRecord
             'prefix' => 'คำนำหน้า',
             'fname' => 'ชื่อ',
             'lname' => 'สกุล',
+            'fullname' => 'ชื่อ-นามสกุล',
             'organization' => 'คณะ',
             'req_position' => 'ตำแหน่ง',
             'study' => 'สาขาวิชา',
             'note' => 'หมาเหตุ...',
             'author' => 'ผู้รับผิดชอบ',
-            'phone' => 'โทรศัพท์',
-            'email' => 'Email',
-            'line' => 'Line',
             'data_json' => 'Data Json',
             'updated_at' => 'Updated At',
             'created_at' => 'Created At',
@@ -94,7 +89,6 @@ class Person extends \yii\db\ActiveRecord
             'updated_by' => 'ผู้แก้ไข',
         ];
     }
-
 
     public function getTracking() {
         return $this->hasMany(Tracking::className(), ['person_id' => 'id']);
