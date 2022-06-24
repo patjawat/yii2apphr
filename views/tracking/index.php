@@ -10,14 +10,10 @@ use app\models\Tracking;
 /* @var $searchModel app\models\TrackingSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Trackings';
+$this->title = 'การติดตาม';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tracking-index">
-
-    <p>
-        <?= Html::a('Create Tracking', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

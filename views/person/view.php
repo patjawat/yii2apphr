@@ -87,7 +87,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php  foreach($model->tracking  as $tracking):?>
 <div class="alert alert-primary" role="alert">
   ขอยื่นครั้งที่ <?=$i++;?> 
-  <?= Html::a('<i class="far fa-edit"></i> แก้ไข', ['/tracking/update', 'id' => $tracking->id], ['class' => 'btn btn-warning btn-sm show flot-right']) ?>
+  <?= Html::a('<i class="far fa-edit"></i> แก้ไข', ['/tracking/update', 'id' => $tracking->id], ['class' => 'btn btn-warning btn-sm show text-back']) ?>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
 </button>
