@@ -66,13 +66,13 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'label' =>'ตำแหน่ง',
                 'value' => function ($model){
-                    return $model->position->name;
+                    return $model->position ? $model->position->name : '';
                 }
             ],
             [
                 'label' =>'สาขาวิชา',
                 'value' => function ($model){
-                    return $model->studyname->name;
+                    return $model->studyname ?  $model->studyname->name : '-';
                 }
             ],
             'author',

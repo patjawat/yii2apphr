@@ -1,12 +1,14 @@
 <?php
 
 use yii\helpers\Html;
+use yii\web\View;
 use yii\bootstrap4\ActiveForm;
 use yii\helpers\ArrayHelper;
 use kartik\widgets\Select2;
 use kartik\datecontrol\DateControl;
 use app\models\Category;
 use app\models\Prefix;
+
 $optiondate = ['type' => DateControl::FORMAT_DATE,'language' => 'th',];
 
 ?>
@@ -87,3 +89,12 @@ $form->field($model, 'study')->widget(Select2::classname(), [
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<?php
+$js = <<< JS
+$(document).on("select2:open", () => {
+    document.querySelector(".select2-container--open .select2-search__field").focus()
+  })
+JS;
+$this->registerJs($js,View::POS_END);
+?>
