@@ -1,18 +1,19 @@
 <?php
 
 namespace app\controllers;
-
 use Yii;
-use app\models\Person;
-use app\models\PersonSearch;
+use app\models\Tracking;
+use app\models\TrackingSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\Response;
+
+
 /**
- * PersonController implements the CRUD actions for Person model.
+ * TrackingController implements the CRUD actions for Tracking model.
  */
-class PersonController extends Controller
+class TrackingController extends Controller
 {
     /**
      * @inheritDoc
@@ -33,13 +34,13 @@ class PersonController extends Controller
     }
 
     /**
-     * Lists all Person models.
+     * Lists all Tracking models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new PersonSearch();
+        $searchModel = new TrackingSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -49,7 +50,7 @@ class PersonController extends Controller
     }
 
     /**
-     * Displays a single Person model.
+     * Displays a single Tracking model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -62,17 +63,19 @@ class PersonController extends Controller
     }
 
     /**
-     * Creates a new Person model.
+     * Creates a new Tracking model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Person();
+        $model = new Tracking();
+        $id = $this->request->get('id');
+        $model->person_id = $id ? $id :'';
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save(false)) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['/person/view', 'id' => $model->person_id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -81,7 +84,7 @@ class PersonController extends Controller
         if($this->request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return[
-                'title' => '<i class="fas fa-user-plus"></i> สร้างใหม่',
+                'title' => 'สร้างใหม่',
                 'content' => $this->renderAjax('create', ['model' => $model]),
                 'footer' =>''
             ];
@@ -94,7 +97,7 @@ class PersonController extends Controller
     }
 
     /**
-     * Updates an existing Person model.
+     * Updates an existing Tracking model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -105,13 +108,14 @@ class PersonController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['/person/view', 'id' => $model->person_id]);
+
         }
 
         if($this->request->isAjax) {
             Yii::$app->response->format = Response::FORMAT_JSON;
             return[
-                'title' => '<i class="far fa-edit"></i> แก้ไข',
+                'title' => 'แก้ไข',
                 'content' => $this->renderAjax('update', ['model' => $model]),
                 'footer' =>''
             ];
@@ -124,7 +128,7 @@ class PersonController extends Controller
     }
 
     /**
-     * Deletes an existing Person model.
+     * Deletes an existing Tracking model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -132,21 +136,23 @@ class PersonController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        if($model->delete()){
+            return $this->redirect(['/person/view', 'id' => $model->person_id]);
+        }
 
-        return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Person model based on its primary key value.
+     * Finds the Tracking model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Person the loaded model
+     * @return Tracking the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Person::findOne(['id' => $id])) !== null) {
+        if (($model = Tracking::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

@@ -35,18 +35,9 @@
             <?php
             echo \hail812\adminlte\widgets\Menu::widget([
                 'items' => [
-                    [
-                        'label' => 'Starter Pages',
-                        'icon' => 'tachometer-alt',
-                        'badge' => '<span class="right badge badge-info">2</span>',
-                        'items' => [
-                            ['label' => 'Active Page', 'url' => ['site/index'], 'iconStyle' => 'far'],
-                            ['label' => 'Inactive Page', 'iconStyle' => 'far'],
-                        ]
-                    ],
-                    ['label' => 'Simple Link', 'icon' => 'th', 'badge' => '<span class="right badge badge-danger">New</span>'],
+                    // ['label' => 'Simple Link', 'icon' => 'th', 'badge' => '<span class="right badge badge-danger">New</span>'],
+                    ['label' => 'การติดตามผล','url' => ['/tracking'],'icon' => 'truck'],
                     ['label' => 'ทะเบียนผู้ยื่นขอ','url' => ['/person'],'icon' => 'user'],
-                    ['label' => 'Reader','url' => ['/reader'],'icon' => 'user-graduate'],
                     ['label' => 'ตั้งค่าหมวดหมู่','url' => ['/category-type'],'icon' => 'layer-group'],
                     // ['label' => 'category','url' => ['/category'],'icon' => 'th'],
                     // ['label' => 'step','url' => ['/step'],'icon' => 'th'],

@@ -19,6 +19,7 @@ class m220421_075257_create_prefix_table extends Migration
         $this->insert('prefix',['name'=> 'นาย']);
         $this->insert('prefix',['name'=> 'นาง']);
         $this->insert('prefix',['name'=> 'นางสาว']);
+        
     }
 
     /**

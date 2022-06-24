@@ -89,3 +89,7 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+label:not(.form-check-label):not(.custom-file-label) {
+    font-weight: 300 !important;
+}

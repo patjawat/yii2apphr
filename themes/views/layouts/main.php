@@ -26,6 +26,11 @@ $this->registerJsFile($publishedRes[1].'/control_sidebar.js', ['depends' => '\ha
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
+<style>
+        label:not(.form-check-label):not(.custom-file-label) {
+    font-weight: 300 !important;
+}
+</style>
 <body class="hold-transition sidebar-mini">
 <?php $this->beginBody() ?>
 
@@ -61,6 +66,37 @@ $this->registerJsFile($publishedRes[1].'/control_sidebar.js', ['depends' => '\ha
     <!-- Main Footer -->
     <?= $this->render('footer') ?>
 </div>
+
+
+<?php 
+$js = <<< JS
+
+$('.show').click(function (e) { 
+    e.preventDefault();
+    $.ajax({
+        type: "get",
+        url: $(this).attr('href'),
+        dataType: "json",
+        beforeSend: function() {
+            beforLoadModal();
+        },
+        success: function (res) {
+            console.log(res);
+            $(".modal-dialog").removeClass('modal-sm modal-md modal-lg');
+            $(".modal-dialog").addClass('modal-lg');
+            $('#main-modal').removeClass('fade');
+            $('#main-modal').modal('show');
+            $('#main-modal-label').html(res.title);
+            $('.modal-body').html(res.content);
+            $('.modal-footer').html(res.footer);
+        }
+    });
+    
+});
+
+JS;
+$this->registerJS($js);
+?>
 
 <?php $this->endBody() ?>
 </body>

@@ -10,6 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => 'People', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="person-create">
+
     <?= $this->render('_form', [
         'model' => $model,
     ]) ?>

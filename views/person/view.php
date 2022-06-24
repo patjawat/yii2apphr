@@ -1,358 +1,140 @@
 <?php
 
 use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\web\View;
-use kartik\detail\DetailView;
-use app\models\Category;
-use app\models\Step;
-use yii\helpers\ArrayHelper;
-
+use yii\widgets\DetailView;
+// use dominus77\sweetalert2\Alert;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Persons */
+/* @var $model app\models\Person */
 
-// $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Persons', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'People', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
-
-$attributes = [
-    [
-        'group' => true,
-        'label' => 'SECTION 1: Identification Information',
-        'rowOptions' => ['class' => 'table-info'],
-    ],
-    [
-        'columns' => [
-            [
-                'attribute' => 'fname',
-                'format' => 'raw',
-                'value' => Html::a('John Steinbeck', '#', [
-                    'class' => 'kv-author-link',
-                ]),
-                'type' => DetailView::INPUT_TEXT,
-                'inputWidth' => '100%',
-            ],
-            [
-                'attribute' => 'lname',
-                'format' => 'raw',
-                'value' => Html::a('John Steinbeck', '#', [
-                    'class' => 'kv-author-link',
-                ]),
-                'type' => DetailView::INPUT_TEXT,
-                'inputWidth' => '100%',
-            ],
-        ],
-    ],
-    [
-        'columns' => [
-            [
-                'attribute' => 'study',
-                'format' => 'raw',
-                'value' => Html::a('John Steinbeck', '#', [
-                    'class' => 'kv-author-link',
-                ]),
-                'type' => DetailView::INPUT_SELECT2,
-                'widgetOptions' => [
-                    'data' => ArrayHelper::map(
-                        Category::find()
-                            ->orderBy('name')
-                            ->asArray()
-                            ->all(),
-                        'id',
-                        'name'
-                    ),
-                    'options' => ['placeholder' => 'Select ...'],
-                    'pluginOptions' => ['allowClear' => true],
-                ],
-                'inputWidth' => '100%',
-            ],
-            [
-                'attribute' => 'organization',
-                'format' => 'raw',
-                'value' => Html::a('John Steinbeck', '#', [
-                    'class' => 'kv-author-link',
-                ]),
-                'type' => DetailView::INPUT_SELECT2,
-                'widgetOptions' => [
-                    'data' => ArrayHelper::map(
-                        Category::find()
-                            ->orderBy('name')
-                            ->asArray()
-                            ->all(),
-                        'id',
-                        'name'
-                    ),
-                    'options' => ['placeholder' => 'Select ...'],
-                    'pluginOptions' => ['allowClear' => true],
-                ],
-                'inputWidth' => '100%',
-            ],
-        ],
-    ],
-    [
-        'columns' => [
-            [
-                'attribute' => 'req_position',
-                'format' => 'raw',
-                'value' => Html::a('John Steinbeck', '#', [
-                    'class' => 'kv-author-link',
-                ]),
-                'type' => DetailView::INPUT_SELECT2,
-                'widgetOptions' => [
-                    'data' => ArrayHelper::map(
-                        Category::find()
-                            ->orderBy('name')
-                            ->asArray()
-                            ->all(),
-                        'id',
-                        'name'
-                    ),
-                    'options' => ['placeholder' => 'Select ...'],
-                    'pluginOptions' => ['allowClear' => true],
-                ],
-                'inputWidth' => '40%',
-            ],
-        ],
-    ],
-    [
-        'columns' => [
-            [
-                'attribute' => 'meetting_date',
-                'format' => 'raw',
-                'value' => Html::a('John Steinbeck', '#', [
-                    'class' => 'kv-author-link',
-                ]),
-                'type' => DetailView::INPUT_DATE,
-                'widgetOptions' => [
-                    'data' => ArrayHelper::map(
-                        Category::find()
-                            ->orderBy('name')
-                            ->asArray()
-                            ->all(),
-                        'id',
-                        'name'
-                    ),
-                    'options' => ['placeholder' => 'Select ...'],
-                    'pluginOptions' => ['allowClear' => true],
-                ],
-                'inputWidth' => '60%',
-            ],  
-        ],
-    ],
-    [
-        'columns' => [
-            [
-                'attribute' => 'step_id',
-                'format' => 'raw',
-                'value' => Html::a('John Steinbeck', '#', [
-                    'class' => 'kv-author-link',
-                ]),
-                'type' => DetailView::INPUT_SELECT2,
-                'widgetOptions' => [
-                    'data' => ArrayHelper::map(
-                        Step::find()
-                            ->orderBy('name')
-                            ->asArray()
-                            ->all(),
-                        'id',
-                        'name'
-                    ),
-                    'options' => ['placeholder' => 'Select ...'],
-                    'pluginOptions' => ['allowClear' => true],
-                ],
-                'inputWidth' => '100%',
-            ],
-        ],
-    ],
-    [
-        'columns' => [
-            [
-                'attribute' => 'note',
-                'format' => 'raw',
-                'value' => Html::a('John Steinbeck', '#', [
-                    'class' => 'kv-author-link',
-                ]),
-                'type' => DetailView::INPUT_TEXTAREA,
-    
-                'inputWidth' => '100%',
-            ],
-        ],
-    ],
-
-];
 ?>
-
 
 <?php
-// echo Date("Y-m-d", strtotime("2021-09-22 +3 Month"));
-// echo Date("Y-m-d", strtotime("2013-01-01 +1 Month -1 Day"));
-?>
-<p>
-    <?php Html::a(
-            'Update',
-            ['update', 'id' => $model->id],
-            ['class' => 'btn btn-primary']
-        ) ?>
-    <?php  Html::a(
-            'Delete',
-            ['delete', 'id' => $model->id],
-            [
-                'class' => 'btn btn-danger',
-                'data' => [
-                    'confirm' => 'Are you sure you want to delete this item?',
-                    'method' => 'post',
-                ],
-            ]
-        ) ?>
-</p>
 
-<?php echo DetailView::widget([
-        'model' => $model,
-        'attributes' => $attributes,
-        // 'mode' => 'view',
-        'mode' => 'edit',
-        'enableEditMode' => true,
-        'bordered' => true,
-        'striped' => true,
-        'condensed' => true,
-        'responsive' => true,
-        'hover' => true,
-        'hAlign' => true,
-        'vAlign' => true,
-        'fadeDelay' => true,
-        'buttons1' => '{update}',
-        'panel' => [
-            'type' => 'primary',
-            'heading' => 'Contratto' . ' : ' . $model->id . ' ' . $model->fname,
-        ],
-        // 'panel' => [
-        //     'type' => $panelType,
-        //     'heading' => $panelHeading,
-        //     'footer' => '<div class="text-center text-muted">This is a sample footer message for the detail view.</div>'
-        // ],
-        'deleteOptions' => [
-            // your ajax delete parameters
-            'params' => ['id' => 1000, 'kvdelete' => true],
-        ],
-        'container' => ['id' => 'kv-demo'],
-        'formOptions' => ['action' => Url::current(['update','id' => $model->id])], // your action to delete
-    ]);
-//  DetailView::widget([
-//     'model' => $model,
-//     'attributes' => [
-//         'fname',
-//         'lname',
-//         'organization',
-//         'position',
-//         'study',
-//     ],
+// Alert::widget([
+//     'options' => [
+//         'Good job!',
+//         'You clicked the button!',
+//         Alert::TYPE_SUCCESS
+//     ]
 // ])
-?>
+ ?>
+<style>
+    .table thead th {
+    font-weight: 300 !important;
+}
+.alert-primary {
+    color: #004085 !important;
+    background-color: #cce5ff !important;
+    border-color: #b8daff !important;
+}
+</style>
+<div class="person-view">
 
+    <p>
+    <?= Html::a('<i class="fas fa-plus"></i> เพิ่มใหม่', ['/tracking/create', 'id' => $model->id], ['class' => 'btn btn-success show']) ?>
 
+        <?= Html::a('<i class="far fa-edit"></i> แก้ไข', ['update', 'id' => $model->id], ['class' => 'btn btn-warning show']) ?>
+        <?= Html::a('<i class="fas fa-trash"></i> ลบทิ้ง', ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
+    </p>
 
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            [
+                'label' =>'xx',
+                'value' => function ($model){
+                    return $model->Fullname();
+                }
+            ],
+            [
+                'label' =>'คณะ',
+                'value' => function ($model){
+                    return $model->org->name;
+                }
+            ],
+            [
+                'label' =>'ตำแหน่ง',
+                'value' => function ($model){
+                    return $model->position->name;
+                }
+            ],
+            [
+                'label' =>'สาขาวิชา',
+                'value' => function ($model){
+                    return $model->studyname->name;
+                }
+            ],
+            'author',
+            'note:ntext',
 
-<div class="card card-primary card-outline card-outline-tabs">
-    <div class="card-header p-0 border-bottom-0">
-        <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="custom-tabs-four-home-tab" data-toggle="pill"
-                    href="#custom-tabs-four-home" role="tab" aria-controls="custom-tabs-four-home"
-                    aria-selected="true">กระบวนการ</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-four-profile-tab" data-toggle="pill"
-                    href="#custom-tabs-four-profile" role="tab" aria-controls="custom-tabs-four-profile"
-                    aria-selected="false">Profile</a>
-            </li>
-        </ul>
-    </div>
-    <div class="card-body">
-        <div class="tab-content" id="custom-tabs-four-tabContent">
-            <div class="tab-pane fade active show" id="custom-tabs-four-home" role="tabpanel"
-                aria-labelledby="custom-tabs-four-home-tab">
-                <?=Html::a('add',['/task/create'],['class' => 'btn btn-primary create-task']);?>
-<div id="view-task">Loading...</div>
-
-            </div>
-            <div class="tab-pane fade" id="custom-tabs-four-profile" role="tabpanel"
-                aria-labelledby="custom-tabs-four-profile-tab">
-                Mauris tincidunt mi at erat gravida, eget tristique urna bibendum. Mauris pharetra purus ut ligula
-                tempor, et vulputate metus facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas
-                sollicitudin, nisi a luctus interdum, nisl ligula placerat mi, quis posuere purus ligula eu lectus.
-                Donec nunc tellus, elementum sit amet ultricies at, posuere nec nunc. Nunc euismod pellentesque diam.
-            </div>
-
-        </div>
-    </div>
+        ],
+    ]) ?>
 
 </div>
 
+<?php $i = 1;?>
+<?php  foreach($model->tracking  as $tracking):?>
+<div class="alert alert-primary" role="alert">
+  ขอยื่นครั้งที่ <?=$i++;?> 
+  <?= Html::a('<i class="far fa-edit"></i> แก้ไข', ['/tracking/update', 'id' => $tracking->id], ['class' => 'btn btn-warning btn-sm show flot-right']) ?>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="container mb-3">
+<?php Html::a('Delete', ['/tracking/delete', 'id' => $tracking->id], [
+            'class' => 'btn btn-danger',
+            'data' => [
+                'confirm' => 'Are you sure you want to delete this item?',
+                'method' => 'post',
+            ],
+        ]) ?>
 
 
-<?php
-$id = $model->id;
-$getTaskUrl = Url::to(['/person-task/list']);
-$js = <<< JS
-getTasks() ;
-$('.create-task').click(function (e) {
-    e.preventDefault();
-    $.ajax({
-        type: "get",
-        url: "index.php?r=person-task/create",
-        data:{id:$id},
-        dataType: "json",
-        success: function (response) {
-            $('#main-modal').modal('show');
-           $('#main-modal-label').html(response.title);
-            $('.modal-body').html(response.content);
-            $('.modal-footer').html(response.footer);
-            $(".modal-dialog").removeClass('modal-sm');
-            $(".modal-dialog").addClass('modal-lg');
-            $('.modal-content').addClass('card-outline card-primary');
-        }
-    });
+    <p>สถานะการขอยื่น : <?=$tracking->status_id;?></p>
+    <p>วันที่สภาอนุมัติ : <?=$tracking->status_id;?></p>
+    <p>โปรดเกล้าแต่งตั้งให้ดำรงต่ำแหน่ง : <?=$tracking->status_id;?></p>
+    <p>วันที่ต้องติดตามผล : <?=$tracking->status_id;?></p>
+</div>
+<?php endforeach; ?>
 
-});
+<?php 
+// $js = <<< JS
 
-$('.a-modal').click(function (e) { 
-    e.preventDefault();
-    var url = $(this).attr('href');
-
-    $.ajax({
-        type: "get",
-        url: url,
-        dataType: "json",
-        success: function (response) {
-            $('#main-modal').modal('show');
-           $('#main-modal-label').html(response.title);
-            $('.modal-body').html(response.content);
-            $('.modal-footer').html(response.footer);
-            $(".modal-dialog").removeClass('modal-sm');
-            $(".modal-dialog").addClass('modal-lg');
-            $('.modal-content').addClass('card-outline card-primary');
-        }
-    });
+// $('.show').click(function (e) { 
+//     e.preventDefault();
+//     $.ajax({
+//         type: "get",
+//         url: $(this).attr('href'),
+//         dataType: "json",
+//         beforeSend: function() {
+//             beforLoadModal();
+//         },
+//         success: function (res) {
+//             console.log(res);
+//             $(".modal-dialog").removeClass('modal-sm modal-md modal-lg');
+//             $(".modal-dialog").addClass('modal-lg');
+//             $('#main-modal').removeClass('fade');
+//             $('#main-modal').modal('show');
+//             $('#main-modal-label').html(res.title);
+//             $('.modal-body').html(res.content);
+//             $('.modal-footer').html(res.footer);
+//         }
+//     });
     
-});
+// });
 
-
-function getTasks() {
-    $.ajax({
-        type: "get",
-        url: '$getTaskUrl',
-        data:{id:$id},
-        dataType: "json",
-        success: function (res) {
-            $('#view-task').html(res);
-
-        }
-    });
-}
-
-JS;
-$this->registerJS($js,View::POS_END);
+// JS;
+// $this->registerJS($js);
 ?>

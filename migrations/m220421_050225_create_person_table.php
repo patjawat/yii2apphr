@@ -20,11 +20,13 @@ class m220421_050225_create_person_table extends Migration
             'organization' => $this->integer()->notNull()->comment('คณะ'),
             'req_position' => $this->integer()->notNull()->comment('ตำแหน่ง'),
             'study' => $this->integer()->comment('สาขาวิชา'),
-            'author' => $this->string()->notNull()->comment('ผู้รับผิดชอบ'),
-            'step_id' => $this->integer()->notNull()->comment('สถานะ'),
-            'meetting_date' => $this->date()->notNull()->comment('ผ่านที่ประชุมวันที่'),
-            'guidelines_date' => $this->date()->comment('วันที่เข้า ก.พ.ว.'),
             'note' => $this->text()->comment('หมาเหตุ...'),
+            'author' => $this->integer()->comment('ผู้รับผิดชอบ'),
+            'data_json' => $this->json()->null(),
+            'updated_at' => $this->timestamp()->defaultValue(null)->append('ON UPDATE CURRENT_TIMESTAMP'),
+            'created_at' => $this->timestamp(),   
+            'created_by' => $this->integer()->comment('ผู้สร้าง'),
+            'updated_by' => $this->integer()->comment('ผู้แก้ไข')
 
         ]);
     }

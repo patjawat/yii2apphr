@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\PersonSearch */
+/* @var $model app\models\TrackingSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="person-search">
+<div class="tracking-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -20,21 +20,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'prefix') ?>
+    <?= $form->field($model, 'person_id') ?>
 
-    <?= $form->field($model, 'fname') ?>
+    <?= $form->field($model, 'status_id') ?>
 
-    <?= $form->field($model, 'lname') ?>
+    <?= $form->field($model, 'approve') ?>
 
-    <?= $form->field($model, 'organization') ?>
+    <?= $form->field($model, 'approve_result_date') ?>
 
-    <?php // echo $form->field($model, 'req_position') ?>
-
-    <?php // echo $form->field($model, 'study') ?>
-
-    <?php // echo $form->field($model, 'note') ?>
-
-    <?php // echo $form->field($model, 'author') ?>
+    <?php // echo $form->field($model, 'tracking') ?>
 
     <?php // echo $form->field($model, 'data_json') ?>
 

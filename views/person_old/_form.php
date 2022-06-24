@@ -15,7 +15,7 @@ $optiondate = ['type' => DateControl::FORMAT_DATE,'language' => 'th',];
 
     <?php $form = ActiveForm::begin(); ?>
 <div class=row>
-    <div class=col-2>
+    <div class=col-1>
     <?=
 $form->field($model, 'prefix')->widget(Select2::classname(), [
     'data' =>  ArrayHelper::map(Prefix::find()->all(),'id','name'),
@@ -39,7 +39,10 @@ $form->field($model, 'prefix')->widget(Select2::classname(), [
 
 
 <div class=row>
-<div class=col-12>
+<div class=col-4>
+
+
+
     <?=
 $form->field($model, 'organization')->widget(Select2::classname(), [
     'data' =>  ArrayHelper::map(Category::find()->where(['category_type' => 1])->all(),'id','name'),
@@ -50,6 +53,10 @@ $form->field($model, 'organization')->widget(Select2::classname(), [
 
 ]);
 ?>
+</div>
+
+<div class=col-4>
+
 <?=
 $form->field($model, 'req_position')->widget(Select2::classname(), [
     'data' =>  ArrayHelper::map(Category::find()->where(['category_type' => 2])->all(),'id','name'),
@@ -61,6 +68,9 @@ $form->field($model, 'req_position')->widget(Select2::classname(), [
 ]);
 ?>
 
+</div>
+
+<div class=col-4>
 <?=
 $form->field($model, 'study')->widget(Select2::classname(), [
     'data' =>  ArrayHelper::map(Category::find()->where(['category_type' => 3])->all(),'id','name'),
@@ -71,14 +81,30 @@ $form->field($model, 'study')->widget(Select2::classname(), [
 
 ]);
 ?>
+
+</div>
 </div>
 
 
+<div class=row>
+<div class=col-4>
+    <?= $form->field($model, 'meetting_date')->widget(DateControl::classname(), $optiondate)->label(true)?>
+
+</div>
+<div class=col-4>
+    <?= $form->field($model, 'author')->textInput(['maxlength' => true]) ?>
+
+</div>
 </div>
 
+
+
+
+
+    <?= $form->field($model, 'step_id')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton('<i class="fas fa-check"></i> บันทึก', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

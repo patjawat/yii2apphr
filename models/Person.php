@@ -3,7 +3,9 @@
 namespace app\models;
 
 use Yii;
-
+use yii\db\Expression;
+use yii\behaviors\BlameableBehavior;
+use yii\behaviors\TimestampBehavior;
 /**
  * This is the model class for table "person".
  *
@@ -14,27 +16,41 @@ use Yii;
  * @property int $organization คณะ
  * @property int $req_position ตำแหน่ง
  * @property int|null $study สาขาวิชา
- * @property string $author ผู้รับผิดชอบ
- * @property int $step_id สถานะ
- * @property string $meetting_date ผ่านที่ประชุมวันที่
- * @property string|null $guidelines_date วันที่เข้า ก.พ.ว.
  * @property string|null $note หมาเหตุ...
+ * @property int|null $author ผู้รับผิดชอบ
+ * @property string|null $data_json
+ * @property string|null $updated_at
+ * @property string $created_at
+ * @property int|null $created_by ผู้สร้าง
+ * @property int|null $updated_by ผู้แก้ไข
  */
 class Person extends \yii\db\ActiveRecord
 {
+
+    public $fullname;
     /**
      * {@inheritdoc}
      */
-    
-    public static function getDb() {
-        return Yii::$app->get('tcds');
-    }
-
     public static function tableName()
     {
         return 'person';
     }
-    public $q;
+    public function behaviors()
+  {
+      return [
+          [
+              'class' => BlameableBehavior::className(),
+              'createdByAttribute' => 'created_by',
+              'updatedByAttribute' => 'updated_by',
+          ],
+          [
+            'class' => TimestampBehavior::className(),
+            'createdAtAttribute' => 'created_at',
+            'updatedAtAttribute' => 'updated_at',
+            'value' => new Expression('NOW()'),
+        ],
+      ];
+  }
 
     /**
      * {@inheritdoc}
@@ -42,11 +58,11 @@ class Person extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['prefix', 'organization', 'req_position', 'study', 'step_id'], 'integer'],
-            [['fname', 'lname', 'organization', 'req_position', 'author', 'step_id', 'meetting_date'], 'required'],
-            [['meetting_date', 'guidelines_date','q'], 'safe'],
-            [['note'], 'string'],
-            [['fname', 'lname', 'author'], 'string', 'max' => 255],
+            [['prefix', 'organization', 'req_position', 'study', 'author', 'created_by', 'updated_by'], 'integer'],
+            [['fname', 'lname', 'organization', 'req_position'], 'required'],
+            [['note', 'data_json'], 'string'],
+            [['updated_at', 'created_at','fullnmae'], 'safe'],
+            [['fname', 'lname'], 'string', 'max' => 255],
         ];
     }
 
@@ -60,53 +76,40 @@ class Person extends \yii\db\ActiveRecord
             'prefix' => 'คำนำหน้า',
             'fname' => 'ชื่อ',
             'lname' => 'สกุล',
+            'fullname' => 'ชื่อ-นามสกุล',
             'organization' => 'คณะ',
             'req_position' => 'ตำแหน่ง',
             'study' => 'สาขาวิชา',
-            'author' => 'ผู้รับผิดชอบ',
-            'step_id' => 'สถานะ',
-            'meetting_date' => 'ผ่านที่ประชุมวันที่',
-            'guidelines_date' => 'วันที่เข้า ก.พ.ว.',
             'note' => 'หมาเหตุ...',
+            'author' => 'ผู้รับผิดชอบ',
+            'data_json' => 'Data Json',
+            'updated_at' => 'Updated At',
+            'created_at' => 'Created At',
+            'created_by' => 'ผู้สร้าง',
+            'updated_by' => 'ผู้แก้ไข',
         ];
     }
 
-    public function getReaders() {
-        return PersonTask::find()->where(['person_id' => $this->id])->all();
-     }
- 
-     public function getStep() {
-         return $this->hasOne(Step::class, ['id' => 'step_id']);
-      }
+    public function getTracking() {
+        return $this->hasMany(Tracking::className(), ['person_id' => 'id']);
+    }
 
-      public function ProgressPerson() {
-        switch ($this->step_id) {
-            case 1:
-              return 1;
-              break;
-            case 2:
-              return 24;
-              break;
-            case 3:
-              return 36;
-              break;
-            case 4:
-                return 48;
-                break;
-            case 5:
-                return 60;
-                break;
-            case 6:
-                return 72;
-                break; 
-            case 7:
-                return 84;
-                break;
-            case 8:
-                return 100;
-                break; 
-            default:
-             return 0;
-          }
-      }
+    public function getPrefixname() {
+        return $this->hasOne(Prefix::className(), ['id' => 'prefix']);
+    }
+    public function getOrg() {
+        return $this->hasOne(Category::className(), ['id' => 'organization']);
+    }
+
+    public function getPosition() {
+        return $this->hasOne(Category::className(), ['id' => 'req_position']);
+    }
+
+    public function getStudyname() {
+        return $this->hasOne(Category::className(), ['id' => 'study']);
+    }
+
+    public function Fullname(){
+        return $this->prefixname->name.$this->fname.' '.$this->lname;
+    }
 }

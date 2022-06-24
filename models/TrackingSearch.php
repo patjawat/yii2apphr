@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Person;
+use app\models\Tracking;
 
 /**
- * PersonSearch represents the model behind the search form of `app\models\Person`.
+ * TrackingSearch represents the model behind the search form of `app\models\Tracking`.
  */
-class PersonSearch extends Person
+class TrackingSearch extends Tracking
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class PersonSearch extends Person
     public function rules()
     {
         return [
-            [['id', 'prefix', 'organization', 'req_position', 'study', 'author'], 'integer'],
-            [['fname', 'lname', 'note', 'data_json', 'created_at', 'updated_at', 'created_by', 'updated_by','fullname'], 'safe'],
+            [['id', 'person_id', 'status_id'], 'integer'],
+            [['approve', 'approve_result_date', 'tracking', 'data_json', 'created_at', 'updated_at', 'created_by', 'updated_by'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class PersonSearch extends Person
      */
     public function search($params)
     {
-        $query = Person::find();
+        $query = Tracking::find();
 
         // add conditions that should always apply here
 
@@ -59,21 +59,18 @@ class PersonSearch extends Person
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'prefix' => $this->prefix,
-            'organization' => $this->organization,
-            'req_position' => $this->req_position,
-            'study' => $this->study,
-            'author' => $this->author,
+            'person_id' => $this->person_id,
+            'status_id' => $this->status_id,
+            'approve' => $this->approve,
+            'approve_result_date' => $this->approve_result_date,
+            'tracking' => $this->tracking,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'created_by' => $this->created_by,
             'updated_by' => $this->updated_by,
         ]);
 
-        $query->andFilterWhere(['like', 'fname', $this->fname])
-            ->andFilterWhere(['like', 'lname', $this->lname])
-            ->andFilterWhere(['like', 'note', $this->note])
-            ->andFilterWhere(['like', 'data_json', $this->data_json]);
+        $query->andFilterWhere(['like', 'data_json', $this->data_json]);
 
         return $dataProvider;
     }
