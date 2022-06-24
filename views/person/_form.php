@@ -76,6 +76,9 @@ $form->field($model, 'study')->widget(Select2::classname(), [
 
 </div>
 
+<?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+
 
     <div class="form-group">
         <?= Html::submitButton('<i class="fas fa-check"></i> บันทึก', ['class' => 'btn btn-success']) ?>

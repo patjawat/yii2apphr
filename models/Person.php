@@ -30,6 +30,7 @@ use yii\behaviors\TimestampBehavior;
  */
 class Person extends \yii\db\ActiveRecord
 {
+    public $fullname;
     /**
      * {@inheritdoc}
      */

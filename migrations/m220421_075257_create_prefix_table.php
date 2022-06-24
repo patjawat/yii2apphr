@@ -16,9 +16,9 @@ class m220421_075257_create_prefix_table extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string()->notNull()->comment('คำนำหน้า'),
         ]);
-        $this->insert('prefix',['name'=> 'นาย']);
-        $this->insert('prefix',['name'=> 'นาง']);
-        $this->insert('prefix',['name'=> 'นางสาว']);
+        $this->insert('prefix',['name'=> 'รศ.']);
+        $this->insert('prefix',['name'=> 'ดร.']);
+        // $this->insert('prefix',['name'=> 'นางสาว']);
         
     }
 
