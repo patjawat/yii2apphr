@@ -15,6 +15,9 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        'thaiFormatter'=>[
+            'class'=>'dixonsatit\thaiYearFormatter\ThaiYearFormatter',
+        ],
         'view' => [
             'theme' => [
                 'pathMap' => [
@@ -79,7 +82,7 @@ $config = [
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
-            '*',
+            // '*',
             // 'liff/*',
             // 'site/*',
             // 'datecontrol/parse/convert',

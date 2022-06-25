@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c1cc2e60fba8b8bee988d1ea89ba77d1",
+    "content-hash": "cdf4a979b2d15a5d91cee351709030d5",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -93,7 +93,7 @@
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "https://github.com/RobinHerbots/Inputmask.git",
+                "url": "git@github.com:RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -153,7 +153,7 @@
             "version": "v2.1.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/js-cookie/js-cookie.git",
+                "url": "git@github.com:js-cookie/js-cookie.git",
                 "reference": "8b70250875f7e07445b6a457f9c2474ead4cba44"
             },
             "dist": {
@@ -453,6 +453,52 @@
             "time": "2020-05-12T01:59:55+00:00"
         },
         {
+            "name": "dixonsatit/yii2-thai-year-formatter",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dixonsatit/yii2-thai-year-formatter.git",
+                "reference": "d49836edf680b9639fb4371e5379c405a8f49e9d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dixonsatit/yii2-thai-year-formatter/zipball/d49836edf680b9639fb4371e5379c405a8f49e9d",
+                "reference": "d49836edf680b9639fb4371e5379c405a8f49e9d",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "default-branch": true,
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "dixonsatit\\thaiYearFormatter\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "satit seethaphon",
+                    "email": "dixonsatit@gmail.com"
+                }
+            ],
+            "description": "Convert Year to Thai Buddhist Era Year",
+            "keywords": [
+                "extension",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/dixonsatit/yii2-thai-year-formatter/issues",
+                "source": "https://github.com/dixonsatit/yii2-thai-year-formatter",
+                "wiki": "https://github.com/dixonsatit/yii2-thai-year-formatter/wiki"
+            },
+            "time": "2015-07-15T09:09:02+00:00"
+        },
+        {
             "name": "doctrine/lexer",
             "version": "1.3.x-dev",
             "source": {
@@ -588,12 +634,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "f88dcf4b14af14a98ad96b14b2b317969eab6715"
+                "reference": "74d2f16d9d765fc282553a5b5b8bb99b7277c619"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/f88dcf4b14af14a98ad96b14b2b317969eab6715",
-                "reference": "f88dcf4b14af14a98ad96b14b2b317969eab6715",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/74d2f16d9d765fc282553a5b5b8bb99b7277c619",
+                "reference": "74d2f16d9d765fc282553a5b5b8bb99b7277c619",
                 "shasum": ""
             },
             "require": {
@@ -641,7 +687,7 @@
             ],
             "support": {
                 "issues": "https://github.com/egulias/EmailValidator/issues",
-                "source": "https://github.com/egulias/EmailValidator/tree/3.2.1"
+                "source": "https://github.com/egulias/EmailValidator/tree/3.x"
             },
             "funding": [
                 {
@@ -649,7 +695,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-06-18T20:57:19+00:00"
+            "time": "2022-06-24T18:51:04+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",

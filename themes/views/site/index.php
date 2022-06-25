@@ -28,8 +28,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                 <div class="info-box-content">
                     <span class="info-box-text">ผู้ขอกำหนดตำแหน่ง(ยื่นขอ)</span>
                     <span class="info-box-number">
-                        10
-                        <small>%</small>
+                        75
                     </span>
                 </div>
 
@@ -42,7 +41,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                 <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">สภามหาวิทยาลัยอนุมัติ</span>
-                    <span class="info-box-number">41,410</span>
+                    <span class="info-box-number">75</span>
                 </div>
 
             </div>
@@ -56,7 +55,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                 <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">ส่ง อว. ตรวจสอบ</span>
-                    <span class="info-box-number">760</span>
+                    <span class="info-box-number">7</span>
                 </div>
 
             </div>
@@ -68,7 +67,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
                 <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">อว.ตรวจสอบผ่าน</span>
-                    <span class="info-box-number">2,000</span>
+                    <span class="info-box-number">20</span>
                 </div>
 
             </div>
@@ -113,7 +112,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
             </p>
             <div class="progress-group">
                 ผู้ขอกำหนดตำแหน่ง(ยื่นขอ)
-                <span class="float-right"><b>160</b>/200</span>
+                <span class="float-right"><b>75</b>/75</span>
                 <div class="progress progress-sm">
                     <div class="progress-bar bg-primary" style="width: 80%"></div>
                 </div>
@@ -121,7 +120,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
 
             <div class="progress-group">
                 สภามหาวิทยาลัยอนุมัติ
-                <span class="float-right"><b>310</b>/400</span>
+                <span class="float-right"><b>75</b>/75</span>
                 <div class="progress progress-sm">
                     <div class="progress-bar bg-danger" style="width: 75%"></div>
                 </div>
@@ -129,7 +128,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
 
             <div class="progress-group">
                 <span class="progress-text">ส่ง อว. ตรวจสอบ</span>
-                <span class="float-right"><b>480</b>/800</span>
+                <span class="float-right"><b>33</b>/75</span>
                 <div class="progress progress-sm">
                     <div class="progress-bar bg-success" style="width: 60%"></div>
                 </div>
@@ -137,7 +136,7 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
 
             <div class="progress-group">
                 อว.ตรวจสอบผ่าน
-                <span class="float-right"><b>250</b>/500</span>
+                <span class="float-right"><b>42</b>/75</span>
                 <div class="progress progress-sm">
                     <div class="progress-bar bg-warning" style="width: 50%"></div>
                 </div>
@@ -147,121 +146,4 @@ $this->params['breadcrumbs'] = [['label' => $this->title]];
     </div>
 </div>
 
-
-<div class="row mt-3">
-    <div class="col-12">
-
-
-
-        <div class="card">
-            <div class="card-header border-transparent">
-                <h3 class="card-title">รายชื่อล่าสุด</h3>
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-
-            <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table class="table m-0">
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Item</th>
-                                <th>Status</th>
-                                <th>Popularity</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                <td>Call of Duty IV</td>
-                                <td><span class="badge badge-success">Shipped</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td><span class="badge badge-warning">Pending</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>iPhone 6 Plus</td>
-                                <td><span class="badge badge-danger">Delivered</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td><span class="badge badge-info">Processing</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                                <td>Samsung Smart TV</td>
-                                <td><span class="badge badge-warning">Pending</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                                <td>iPhone 6 Plus</td>
-                                <td><span class="badge badge-danger">Delivered</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                                <td>Call of Duty IV</td>
-                                <td><span class="badge badge-success">Shipped</span></td>
-                                <td>
-                                    <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-
-            <div class="card-footer clearfix">
-            <?= Html::a(
-            '<i class="fas fa-user-plus"></i> เพิ่มใหม่',
-            ['/person/create'],
-            ['class' => 'btn btn-sm btn-info float-left show']
-        ) ?>
-                    <?= Html::a(
-            'View All',
-            ['/person'],
-            ['class' => 'btn btn-sm btn-secondary float-right']
-        ) ?>
-
-            </div>
-
-        </div>
-
-    </div>
-</div>
+<?=$this->render('person');?>

@@ -11,7 +11,7 @@ loadUser();
 function loadUser(){
     $.ajax({
         type: "get",
-        url: "index.php?r=usermanager/user",
+        url: "/usermanager/user",
         dataType: "json",
         beforeSend:function(){
             $('.loading-page').show();

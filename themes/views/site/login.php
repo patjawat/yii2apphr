@@ -1,64 +1,123 @@
 <?php
+
+use yii\bootstrap4\ActiveForm;
 use yii\helpers\Html;
+
+$this->title = 'Login';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="card">
-    <div class="card-body login-card-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+<style>
+.form-group {
+    margin-bottom: 0.1px;
+}
 
-        <?php $form = \yii\bootstrap4\ActiveForm::begin(['id' => 'login-form']) ?>
+.login-logo,
+.register-logo {
+    font-size: 1.5rem !important;
+}
 
-        <?= $form->field($model,'username', [
-            'options' => ['class' => 'form-group has-feedback'],
-            'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-envelope"></span></div></div>',
-            'template' => '{beginWrapper}{input}{error}{endWrapper}',
-            'wrapperOptions' => ['class' => 'input-group mb-3']
-        ])
-            ->label(false)
-            ->textInput(['placeholder' => $model->getAttributeLabel('username')]) ?>
+</style>
 
-        <?= $form->field($model, 'password', [
-            'options' => ['class' => 'form-group has-feedback'],
-            'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-lock"></span></div></div>',
-            'template' => '{beginWrapper}{input}{error}{endWrapper}',
-            'wrapperOptions' => ['class' => 'input-group mb-3']
-        ])
-            ->label(false)
-            ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
+<div class="site-login">
+    <?php //Html::img('@web/img/logo-theptarin-src.png')?>
+    <?php
+$form = ActiveForm::begin([
+    'layout' => 'horizontal',
+    'id' => 'form-asset',
+    'options' => ['enctype' => 'multipart/form-data', 'autocomplete' => 'off'],
+    'fieldConfig' => [
+        'template' => "{label}\n{beginWrapper}\n{input}\n{hint}\n{error}\n{endWrapper}",
+        'horizontalCssClasses' => [
+            'label' => 'col-sm-0',
+            'offset' => 'offset-sm-0',
+            'wrapper' => 'col-sm-12',
+            'error' => '',
+            'hint' => '',
+        ],
+    ],
+]);
+?>
 
-        <div class="row">
-            <div class="col-8">
-                <?= $form->field($model, 'rememberMe')->checkbox([
-                    'template' => '<div class="icheck-primary">{input}{label}</div>',
-                    'labelOptions' => [
-                        'class' => ''
-                    ],
-                    'uncheck' => null
-                ]) ?>
-            </div>
-            <div class="col-4">
-                <?= Html::submitButton('Sign In', ['class' => 'btn btn-primary btn-block']) ?>
-            </div>
+    <div class="login-box">
+        <div class="login-logo">
+            <?php // Html::img('@web/img/Logo-TRH.png');?>
         </div>
+        <!-- /.login-logo -->
+        <div class="card shadow-lg p-3 mb-5 bg-white rounded">
 
-        <?php \yii\bootstrap4\ActiveForm::end(); ?>
+            <div class="card-body login-card-body">
+                <p class="login-box-msg"><i class="fas fa-user-lock"></i>
+                    <!-- ยืนยันตัวตนเพื่อเข้าใช้งาน -->
+                    Admin-PPS
+                </p>
+                <form action="../../index3.html" method="post">
 
-        <div class="social-auth-links text-center mb-3">
-            <p>- OR -</p>
-            <a href="#" class="btn btn-block btn-primary">
-                <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-            </a>
-            <a href="#" class="btn btn-block btn-danger">
-                <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-            </a>
+                    <?=
+$form->field($model, 'username', [
+    'inputTemplate' => '<div class="input-group mb-3">
+            {input}
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+            </div>',
+    'inputOptions' =>
+    [
+        'autofocus' => 'autofocus',
+        'tabindex' => '1',
+        'autocomplete' => 'off',
+    ],
+]
+)->label(false);
+?>
+
+                    <?=
+$form->field($model, 'password', [
+    'inputTemplate' => '<div class="input-group mb-3">
+            {input}
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+            </div>',
+    'inputOptions' =>
+    [
+        'autofocus' => 'autofocus',
+        'tabindex' => '2',
+        'autocomplete' => 'off',
+    ],
+])->passwordInput()->label(false);
+?>
+
+
+
+                    <div class="social-auth-links text-center mb-3">
+                        <?=Html::submitButton('Login', ['class' => 'btn btn-block btn-primary', 'name' => 'login-button', 'tabindex' => '3'])?>
+
+                    </div>
+                    <!-- /.social-auth-links -->
+            </div>
+            <!-- /.login-card-body -->
         </div>
-        <!-- /.social-auth-links -->
-
-        <p class="mb-1">
-            <a href="forgot-password.html">I forgot my password</a>
-        </p>
-        <p class="mb-0">
-            <a href="register.html" class="text-center">Register a new membership</a>
-        </p>
     </div>
-    <!-- /.login-card-body -->
+    <!-- /.login-box -->
+
+    <?php ActiveForm::end();?>
+
+
 </div>
+
+
+<?php
+$js = <<< JS
+$('#awaitLogin').hide();
+$('#form-asset').on('beforeSubmit', function (e) {
+    $('#awaitLogin').show();
+    $('.site-login').hide();
+	return true;
+});
+JS;
+$this->registerJS($js, yii\web\View::POS_END)
+?>
