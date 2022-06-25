@@ -5,8 +5,8 @@ use app\components\UserHelper;
 ?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-<?=Html::a(Html::img($assetDir.'/img/AdminLTELogo.png',['class' => 'brand-image img-circle elevation-3','style' => 'opacity: .8']).'<span class="brand-text font-weight-light">AdminPPS</span>',['/'],['class' => 'brand-link']);
-?>
+<?php // Html::a(Html::img($assetDir.'/img/AdminLTELogo.png',['class' => 'brand-image img-circle elevation-3','style' => 'opacity: .8']).'<span class="brand-text font-weight-light">AdminPPS</span>',['/'],['class' => 'brand-link']);?>
+<?=Html::a(Html::img('@web/img/kku.png',['class' => 'brand-image img-circle elevation-3','style' => 'opacity: .8']).'<span class="brand-text font-weight-light">AdminPPS</span>',['/'],['class' => 'brand-link']);?>
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
