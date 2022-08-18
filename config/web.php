@@ -51,13 +51,62 @@ $config = [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        'mailer' => [
+        // 'mailer' => [
+        //     'class' => 'yii\swiftmailer\Mailer',
+        //     // send all mails to a file by default. You have to set
+        //     // 'useFileTransport' to false and configure transport
+        //     // for the mailer to send real emails.
+        //     'useFileTransport' => true,
+        // ],
+        // 'mailer' => [ //กำหนดการส่ง Email ผ่าน SMTP ของ Google
+        //     'class' => 'yii\swiftmailer\Mailer',
+        //     'viewPath' => '@app/mail',
+        //     // send all mails to a file by default. You have to set
+        //     // 'useFileTransport' to false and configure a transport
+        //     // for the mailer to send real emails.
+        //     'useFileTransport' => false,
+        //     'transport' => [
+        //         'class' => 'Swift_SmtpTransport',
+        //         'host' => 'smtp.google.com',
+        //         'username' => 'patjawat@gmail.com', //user ทีจะใช้ smtp
+        //         'password' => 'Patjawat@2528x',//รหัสผ่านของ user
+        //         'port' => '587',
+        //         'encryption' => 'ssl',
+        //     ],
+
+        // ],
+
+        'mailer' => [ //กำหนดการส่ง Email ผ่าน SMTP ของ Google
             'class' => 'yii\swiftmailer\Mailer',
+            'viewPath' => '@app/mail',
             // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure transport
+            // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
-        ],
+            'useFileTransport' => false,
+            // 'transport' => [
+            //     'class' => 'Swift_SmtpTransport',
+            //     'host' => 'outgoing.mail.go.th',
+            //     'username' => 'adirak.muan@moph.go.th', //user ทีจะใช้ smtp
+            //     'password' => 'Moph1234',//รหัสผ่านของ user
+            //     'port' => '465',
+            //     'encryption' => 'ssl',
+            // ],       
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com',
+                'username' => 'patjawat@gmail.com', //user ทีจะใช้ smtp
+                'password' => 'Patjawat@2528',//รหัสผ่านของ user
+                'port' => '465',
+                'encryption' => 'ssl',
+                // 'encryption' => 'tls',
+            ], 
+            
+            
+            
+        ],  
+
+            
+
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [
@@ -82,7 +131,7 @@ $config = [
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
-            // '*',
+            '*',
             // 'liff/*',
             // 'site/*',
             // 'datecontrol/parse/convert',

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cdf4a979b2d15a5d91cee351709030d5",
+    "content-hash": "c30e955fb0f8f3ad62ba473bebdb8863",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -3333,6 +3333,62 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "nterms/yii2-mailqueue",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nterms/yii2-mailqueue.git",
+                "reference": "8acfbdac9f9c9c7d504beec560e5be2699f484ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nterms/yii2-mailqueue/zipball/8acfbdac9f9c9c7d504beec560e5be2699f484ba",
+                "reference": "8acfbdac9f9c9c7d504beec560e5be2699f484ba",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*",
+                "yiisoft/yii2-swiftmailer": "~2.1.0"
+            },
+            "default-branch": true,
+            "type": "yii2-extension",
+            "extra": {
+                "bootstrap": "nterms\\mailqueue\\Bootstrap"
+            },
+            "autoload": {
+                "psr-4": {
+                    "nterms\\mailqueue\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Saranga Abeykoon",
+                    "email": "amisaranga@gmail.com",
+                    "homepage": "http://nterms.com/"
+                }
+            ],
+            "description": "Email queue component for yii2 that works with yii2-swiftmailer.",
+            "homepage": "https://github.com/nterms/yii2-mailqueue",
+            "keywords": [
+                "component",
+                "email",
+                "extension",
+                "queue",
+                "swiftmailer",
+                "yii2",
+                "yii2-swiftmailer"
+            ],
+            "support": {
+                "issues": "https://github.com/nterms/yii2-mailqueue/issues",
+                "source": "https://github.com/nterms/yii2-mailqueue/tree/0.0.16"
+            },
+            "time": "2018-11-26T16:44:45+00:00"
         },
         {
             "name": "paragonie/random_compat",
