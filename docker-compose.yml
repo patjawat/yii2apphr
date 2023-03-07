@@ -8,19 +8,19 @@ services:
     ports:
       - '81:80'
     links:
-      - mariaDB:db
+      - mariaDB-hr:db
   
-  mariaDB:
+  mariaDB-hr:
     image: mariadb
-    hostname: mariadb
-    container_name: mariadb
+    hostname: mariadb-hr
+    container_name: mariadb-hr
     restart: always
     volumes:
       - ./docker/mariadb/data/:/var/lib/mysql
     command: ['mysqld', '--character-set-server=utf8', '--collation-server=utf8_general_ci']
 
     ports:
-      - 3307:3306
+      - 3306:3306
     environment:
       - TZ=Asia/Bangkok
       - MYSQL_ROOT_PASSWORD=docker
@@ -32,13 +32,13 @@ services:
     image: phpmyadmin/phpmyadmin
     restart: always
     links:
-      - mariaDB:db
+      - mariaDB-hr:db
     ports:
       - 8200:80
     environment:
       MYSQL_USERNAME: root
       MYSQL_ROOT_PASSWORD: docker
-      PMA_HOST: mariaDB
+      PMA_HOST: mariaDB-hr
   
 
 
